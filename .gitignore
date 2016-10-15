@@ -1,7 +1,10 @@
+.DS_Store
 *.pyc
-*.egg-info
 *.swp
+*.egg-info
 .cache/
 venv/
 build/
 dist/
+.coverage
+static/
