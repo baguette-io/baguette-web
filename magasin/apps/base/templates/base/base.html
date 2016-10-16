@@ -19,7 +19,7 @@
 </head><!--/head-->
 
 <body>
-	<header id="header">      
+	<header id="header">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 overflow">
@@ -28,7 +28,7 @@
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
                         </ul>
-                    </div> 
+                    </div>
                 </div>
              </div>
         </div>
@@ -38,115 +38,21 @@
                     <a class="navbar-brand" href="/">
                         <h1><img src="{% static "base/images/logo.png" %}" alt="logo"></h1>
                     </a>
-                    
+
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="/">Home</a></li>
-                        <li><a href="url 'pricing'">{% trans "Pricing" %}</a></li>                    
-                        <li><a href="url 'about'">{% trans "About" %}</a></li>                    
-                        <li><a href="url 'signin'">{% trans "Signin" %}</a></li>                    
+                        <li class="{%block navhome %}{%endblock %}"><a href="/">Home</a></li>
+                        <li class="{%block navprice %}{%endblock %}"><a href="url 'pricing'">{% trans "Pricing" %}</a></li>
+                        <li class="{%block navabout %}{%endblock %}"><a href="url 'about'">{% trans "About" %}</a></li>
+                        <li class="{%block navsignin %}{%endblock %}"><a href="{% url 'signin' %}">{% trans "Signin" %}</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </header>
     <!--/#header-->
-
-    <section id="home-slider">
-        <div class="container">
-            <div class="main-slider">
-                <div class="slide-text">
-                    <h1>{% trans "Platform as a service" %}</h1>
-                    <p>{% trans "Deploy your whole platform by just pushing your code. We will build and scale your services using Docker/Mesos" %}.</p>
-                    <a href="url 'signup'" class="btn btn-common">{% trans "SIGN UP" %}</a>
-                </div>
-                <img src="{% static "base/images/home/slider/slide1/house.png" %}" class="img-responsive slider-house" alt="slider image">
-                <img src="{% static "base/images/home/slider/slide1/circle1.png" %}" class="slider-circle1" alt="slider image">
-                <img src="{% static "base/images/home/slider/slide1/circle2.png" %}" class="slider-circle2" alt="slider image">
-                <img src="{% static "base/images/home/slider/slide1/cloud1.png" %}" class="slider-cloud1" alt="slider image">
-                <img src="{% static "base/images/home/slider/slide1/cloud2.png" %}" class="slider-cloud2" alt="slider image">
-                <img src="{% static "base/images/home/slider/slide1/cloud3.png" %}" class="slider-cloud3" alt="slider image">
-                <img src="{% static "base/images/home/slider/slide1/sun.png" %}" class="slider-sun" alt="slider image">
-                <img src="{% static "base/images/home/cycle.png" %}" class="slider-cycle" alt="">
-            </div>
-        </div>
-        <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
-    </section>
-    <!--/#home-slider-->
-
-    <section id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <img src="{% static "base/images/services/icon1.png" %}" alt="">
-                        </div>
-                        <h2>{% trans "Build & Deployment" %}</h2>
-                        <p>{% trans "Deploy your code or your docker easily by just doing a <strong>git push</strong>" %}.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
-                            <img src="{% static "base/images/services/icon2.png" %}" alt="">
-                        </div>
-                        <h2>{% trans "Continuous integration/delivery" %}</h2>
-                        <p>{% trans "<strong>baguette.io</strong> can be easily integrated with Jenkins/Travis/Codeship using <strong>webhooks</strong>" %}.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
-                            <img src="{% static "base/images/services/icon3.png" %}" alt="">
-                        </div>
-                        <h2>{% trans "Monitoring" %}</h2>
-                        <p>{% trans "<strong>Real time</strong> monitoring and logging of your running apps" %}.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--/#services-->
-	<div class="colntainer">
-        <h2 class="page-header" style="margin-left:10px">{% trans "Our stack" %}</h2>
-    </div>
-    <section id="features">
-        <div class="container">
-            <div class="row">
-                <div class="single-features">
-                    <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="{% static "base/images/stack/docker.png" %}" class="img-responsive" alt="">
-                    </div>
-                    <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <h2>Docker</h2>
-                        <p>{% trans "Docker is the leading containerization platform. That's why we use it to serve you" %}.</p>
-                    </div>
-                </div>
-                <div class="single-features">
-                    <div class="col-sm-6 col-sm-offset-1 align-right wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <h2>Mesos</h2>
-                        <p>{% trans "Apache Mesos is a famous distributed systems kernel" %}.</p>
-                    </div>
-                    <div class="col-sm-5 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="{% static "base/images/stack/mesos.png" %}" class="img-responsive" alt="">
-                    </div>
-                </div>
-                <div class="single-features">
-                    <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="{% static "base/images/stack/haproxy.png" %}" class="img-responsive" alt="">
-                    </div>
-                    <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <h2>HAProxy</h2>
-                        <P>{% trans "A very reliable and proven proxy. That's why we use it" %}.</P>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-     <!--/#features-->
-
+    {% block maincontent %}{% endblock %}
     <footer id="footer">
         <div class="container">
             <div class="row">

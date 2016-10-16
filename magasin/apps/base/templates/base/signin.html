@@ -1,0 +1,10 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load i18n %}
+{%block navsignin %}active{%endblock %}
+{%block maincontent %}
+	<div class="colntainer">
+        <h2 class="page-header" style="margin-left:10px">{% trans "Sign-in" %}</h2>
+    </div>
+    {{form}}
+{% endblock %}
