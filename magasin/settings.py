@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 import ConfigParser as configparser
+import logging
 
 import os
 
@@ -26,6 +27,7 @@ CONFIG = configparser.SafeConfigParser(allow_no_value=True)
 CONFIG.read(os.environ.get('MAGASIN_INI', '/etc/magasin.ini'))
 
 DEBUG = CONFIG.get('general', 'debug')
+API_URL = CONFIG.get('general', 'api')
 STATIC_URL = CONFIG.get('general', 'static_url')
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap3',
     'magasin.apps.base',
 ]
 
@@ -79,12 +82,15 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'magasin.apps.base.context_processors.is_connected',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'magasin.wsgi.application'
+
+AUTHENTICATION_BACKENDS = ['magasin.auth.AuthBackend']
 
 
 # Database
@@ -122,6 +128,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+if DEBUG:
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format='%(asctime)s %(levelname)s %(message)s',
+    )

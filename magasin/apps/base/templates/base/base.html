@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load bootstrap3 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +11,11 @@
     <title>Baguette.io</title>
     <link href="{% static "base/css/bootstrap.min.css" %}" rel="stylesheet">
     <link href="{% static "base/css/font-awesome.min.css" %}"  rel="stylesheet">
-    <link href="{% static "base/css/animate.min.css" %}"  rel="stylesheet"> 
-    <link href="{% static "base/css/lightbox.css" %}"  rel="stylesheet"> 
+    <link href="{% static "base/css/animate.min.css" %}"  rel="stylesheet">
+    <link href="{% static "base/css/lightbox.css" %}"  rel="stylesheet">
     <link href="{% static "base/css/main.css" %}"  rel="stylesheet">
     <link href="{% static "base/css/responsive.css" %}"  rel="stylesheet">
+    <link href="{% static "base/css/base.css" %}"  rel="stylesheet">
 
     <link rel="shortcut icon" href="{% static "base/images/ico/favicon.ico" %}">
 </head><!--/head-->
@@ -45,14 +47,25 @@
                         <li class="{%block navhome %}{%endblock %}"><a href="/">Home</a></li>
                         <li class="{%block navprice %}{%endblock %}"><a href="url 'pricing'">{% trans "Pricing" %}</a></li>
                         <li class="{%block navabout %}{%endblock %}"><a href="url 'about'">{% trans "About" %}</a></li>
-                        <li class="{%block navsignin %}{%endblock %}"><a href="{% url 'signin' %}">{% trans "Signin" %}</a></li>
+                        {% if is_connected %}
+                            <li class="{%block navaccount %}{%endblock %}"><a href="">{% trans "My account" %}</a></li>
+                        {% else %}
+                            <li class="{%block navsignin %}{%endblock %}"><a href="{% url 'signin' %}">{% trans "Signin" %}</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </div>
     </header>
     <!--/#header-->
-    {% block maincontent %}{% endblock %}
+    <div class="container">
+        {% if messages %}
+            {% bootstrap_messages %}
+        {% endif %}
+    </div>
+    {% block maincontent %}
+
+    {% endblock %}
     <footer id="footer">
         <div class="container">
             <div class="row">
@@ -73,6 +86,6 @@
     <script type="text/javascript" src="{% static "base/js/bootstrap.min.js" %}"></script>
     <script type="text/javascript" src="{% static "base/js/lightbox.min.js" %}"></script>
     <script type="text/javascript" src="{% static "base/js/wow.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "base/js/main.js" %}"></script>   
+    <script type="text/javascript" src="{% static "base/js/main.js" %}"></script>
 </body>
 </html>

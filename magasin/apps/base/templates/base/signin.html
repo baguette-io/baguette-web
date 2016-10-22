@@ -1,10 +1,25 @@
 {% extends "base/base.html" %}
 {% load static %}
 {% load i18n %}
+{% load bootstrap3 %}
 {%block navsignin %}active{%endblock %}
 {%block maincontent %}
 	<div class="colntainer">
         <h2 class="page-header" style="margin-left:10px">{% trans "Sign-in" %}</h2>
     </div>
-    {{form}}
+    <div class="container">
+       <form action="{% url 'signin' %}" method="post" class="form-signin">
+    		{% csrf_token %}
+    		{% bootstrap_form form %}
+    		{% buttons %}
+        	<button type="submit" class="btn btn-lg btn-primary btn-block">
+            	{% trans "Login" %}
+        	</button>
+    		{% endbuttons %}
+			<hr />
+			<a href="{% url 'signup' %}">
+				<button type="button" class="btn btn-lg btn-success btn-block">{% trans "Signup" %}</button>
+			</a>
+		</form>
+    </div>
 {% endblock %}

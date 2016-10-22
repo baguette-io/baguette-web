@@ -17,6 +17,7 @@ setup(
     ],
     install_requires=[
         'Django==1.10.2',
+        'django-bootstrap3==7.1.0',
         'requests==2.11.1',
     ],
     entry_points={

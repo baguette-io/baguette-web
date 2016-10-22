@@ -2,23 +2,33 @@
 """
 Base views.
 """
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.http import require_http_methods, require_GET
-from .forms import SigninForm
+from .forms import SigninForm, SignupForm
 
 @require_GET
 def home(request):
     """
     Homepage.
     """
-    return render(request,'base/home.html')
+    return render(request, 'base/home.html')
 
 @require_http_methods(["GET", "POST"])
 def signin(request):
     """
     Signin page.
     """
-    form = SigninForm()
+    if request.method == 'GET':
+        form = SigninForm()
+    else:
+        form = SigninForm(request.POST)
+        if form.is_valid():
+            #Add the cookie to the client
+            response = redirect('home')
+            response.set_cookie('token', form.token)
+            return response
     return render(request, 'base/signin.html', {'form':form})
 
 @require_http_methods(["GET", "POST"])
@@ -26,4 +36,13 @@ def signup(request):
     """
     Signup page.
     """
-    return render(request, 'base/signup.html')
+    if request.method == 'GET':
+        form = SignupForm()
+    else:
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            #Success message and redirect to the login page
+            messages.success(request, _('Account created. Please signin.'))
+            response = redirect('signin')
+            return response
+    return render(request, 'base/signup.html', {'form':form})
