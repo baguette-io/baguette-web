@@ -27,6 +27,16 @@
                     }
                 });
             }
+			function post(data, type, success, error){
+        		$.ajax({
+        		    url: '{{ API_URL }}' + type + '/',
+        		    type: 'POST',
+                    headers: {'Authorization' : token},
+        		    data: data,
+        		    success: success,
+					error: error
+        		});
+			}
             function set_quotas(response, type){
                 for (var i in response['results']){
                        var obj = response['results'][i];
@@ -43,7 +53,6 @@
                 //2. Populate
                 for (var i in response['results']){
                         var obj = response['results'][i];
-                        console.log(obj);
                         var el = document.getElementById('list_'+ type);
                         if (el != null){
                             //1. Create the elements
@@ -83,14 +92,41 @@
                         }
                 }
             }
+			$('#addVPC-form').on('submit', function(e){
+                e.preventDefault();
+        		var data = $('#addVPC-form').serialize();
+                var name = document.forms['addVPC-form'].name.value;
+                if (name != ""){
+                    post(data, 'vpcs', function(data){
+                        $('#addVPC .alert').css('display', 'none');
+                        $('#addVPC').modal('hide');
+                        var message = "{% trans "VPC created." %}";
+                        $('#account-creation-alert').html(message);
+                        $('#account-creation-alert').css('display', 'block');
+                    },
+                    function(error){
+                        var message = "";
+                        for (var i in error['responseJSON']){
+                            message = error['responseJSON'][i][0];
+                            break;
+                        }
+                        $('#addVPC .alert').html(message);
+                        $('#addVPC .alert').css('display', 'block');
+                    });
+                }
+            });
             query(urls['quotas'], set_quotas, 'quotas');
             query(urls['vpcs'], set_objects, 'vpcs');
             query(urls['projects'], set_objects, 'projects');
             query(urls['keys'], set_objects, 'keys');
+
+
+
         });
 {% endblock %}
 {%block maincontent %}
     <div class="container">
+        <div id="account-creation-alert" class="alert alert-success alert-dismissable" style="display:none;"></div>
         <div class="col-md-4">
             <div class="row">
                 <div class="col-md-7">
@@ -101,7 +137,7 @@
                 </div>
             </div>
             <div>
-			    <button type="button" class="btn btn-success btn-block">{% trans "Add" %}</button>
+			    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#addVPC">{% trans "Add" %}</button>
             </div>
             <div id="list_vpcs" style="margin-top:30px"></div>
         </div>
@@ -135,4 +171,5 @@
         </div>
 
     </div>
+{% include "account/add_vpc.html" %}
 {% endblock %}
