@@ -49,14 +49,16 @@ ALLOWED_HOSTS = [CONFIG.get('security', 'allowed_host')]
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #Third party packages
     'bootstrap3',
+    #Magasin packages
     'magasin.apps.base',
+    'magasin.apps.account',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'magasin.wsgi.application'
 
-AUTHENTICATION_BACKENDS = ['magasin.auth.AuthBackend']
 
 
 # Database
@@ -135,3 +136,7 @@ if DEBUG:
         level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(message)s',
     )
+
+AUTH_USER_MODEL = 'base.APIUser'
+AUTHENTICATION_BACKENDS = ['magasin.utils.auth.APIAuthBackend']
+LOGIN_URL = '/signin/'

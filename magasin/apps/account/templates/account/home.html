@@ -1,0 +1,136 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load bootstrap3 %}
+{%block navaccount %}active{%endblock %}
+{%block jsheader %}
+        $(document).ready(function(){
+            var token = 'JWT ' + getCookie("token");
+            var urls = {'vpcs': '{{ API_URL }}vpcs/',
+                        'projects': '{{ API_URL }}/projects/',
+                        'keys': '{{ API_URL }}/keys/',
+                        'quotas': '{{ API_URL }}/quotas/'
+            }
+            function query(url, callback, type){
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    headers: {'Authorization' : token},
+                    success: function(result){
+                        callback(result, type);
+                    },
+                    error: function(error){
+
+                    }
+                });
+            }
+            function set_quotas(response, type){
+                for (var i in response['results']){
+                       var obj = response['results'][i];
+                        if (document.getElementById(obj['key']) != null){
+                            document.getElementById(obj['key']).innerHTML = parseInt(obj['value']);
+                        }
+                }
+            }
+            function set_objects(response, type){
+                //1. Count
+                if (document.getElementById('count_'+ type) != null){
+                    document.getElementById('count_' + type).innerHTML = parseInt(response['count']);
+                }
+                //2. Populate
+                for (var i in response['results']){
+                        var obj = response['results'][i];
+                        console.log(obj);
+                        var el = document.getElementById('list_'+ type);
+                        if (el != null){
+                            //1. Create the elements
+                            var panel = document.createElement("div");
+                            var panelHeader = document.createElement("div");
+                            var panelTitle = document.createElement("h3");
+                            var panelBody = document.createElement("ul");
+                            var panelFooter = document.createElement("div");
+                            panelFooter.className = "panel-footer font-italic text-right";
+                            panelBody.className = "list-group";
+                            panelTitle.className="panel-title font-bold";
+                            panelHeader.className="panel-heading text-center";
+                            panel.className="panel panel-info";
+                            panel.id = type + '_' + obj['name'];
+                            //2. Add all the object keys/value into a list
+                            for(var j in obj){
+                                if (['name', 'date_modified'].indexOf(j)!=-1){
+                                    continue;
+                                }else if(j == 'date_created'){
+                                    var date = new Date(obj[j]);
+                                    panelFooter.textContent = date.toLocaleString();
+                                }else{
+                                    var li = document.createElement("li");
+                                    li.className = "list-group-item";
+                                    li.textContent = j + ' : ' + obj[j];
+                                    panelBody.appendChild(li);
+                               }
+                            }
+                            //3. Check if there is a date_created and add it
+                            //4. Add all the elements
+                            panelTitle.textContent = obj['name'];
+                            panelHeader.appendChild(panelTitle);
+                            panel.appendChild(panelHeader);
+                            panel.appendChild(panelBody);
+                            panel.appendChild(panelFooter);
+                            el.appendChild(panel);
+                        }
+                }
+            }
+            query(urls['quotas'], set_quotas, 'quotas');
+            query(urls['vpcs'], set_objects, 'vpcs');
+            query(urls['projects'], set_objects, 'projects');
+            query(urls['keys'], set_objects, 'keys');
+        });
+{% endblock %}
+{%block maincontent %}
+    <div class="container">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-7">
+                    <h1>{% trans "VPCs" %}</h1>
+                </div>
+                <div class="col-md-5">
+                    <h1><span id="count_vpcs"></span>/<span id="max_vpcs"></span></h1>
+                </div>
+            </div>
+            <div>
+			    <button type="button" class="btn btn-success btn-block">{% trans "Add" %}</button>
+            </div>
+            <div id="list_vpcs"></div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-7">
+                    <h1>{% trans "Projects" %}</h1>
+                </div>
+                <div class="col-md-5">
+                    <h1><span id="count_projects"></span>/<span id="max_projects"></span></h1>
+                </div>
+            </div>
+            <div>
+			    <button type="button" class="btn btn-success btn-block">{% trans "Add" %}</button>
+            </div>
+            <div id="list_projects"></div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-7">
+                    <h1>{% trans "Keys" %}</h1>
+                </div>
+                <div class="col-md-5">
+                    <h1><span id="count_keys"></span>/<span id="max_keys"></span></h1>
+                </div>
+            </div>
+            <div>
+			    <button type="button" class="btn btn-success btn-block">{% trans "Add" %}</button>
+            </div>
+            <div id="list_keys"></div>
+        </div>
+
+    </div>
+{% endblock %}

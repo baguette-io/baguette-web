@@ -5,6 +5,7 @@ Base forms.
 
 from django import forms
 from django.conf import settings
+from django.contrib.auth import authenticate
 from django.utils.translation import ugettext_lazy as _
 from magasin.utils import Request
 
@@ -20,17 +21,14 @@ class SigninForm(forms.Form):
         Validate the login.
         """
         cleaned_data = super(SigninForm, self).clean()
-        api = Request(settings.API_URL)
-        result = api.post('accounts/login/',
-                          {'email': cleaned_data['email'],
-                           'password': cleaned_data['password'],
-                          })
-        if result['status'] != 0:
+        user = authenticate(email=cleaned_data['email'],
+                            password=cleaned_data['password'])
+        if not user:
             raise forms.ValidationError(
-                result['error']['non_field_errors'][0]
+                _('Unable to login with provided credentials.')
             )
         #Successfull login
-        self.token = result['result']['token']#pylint:disable=attribute-defined-outside-init,unsubscriptable-object
+        self.user = user#pylint:disable=attribute-defined-outside-init,unsubscriptable-object
 
 class SignupForm(forms.Form):
     """

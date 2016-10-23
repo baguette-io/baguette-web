@@ -3,6 +3,7 @@
 Base views.
 """
 from django.contrib import messages
+from django.contrib.auth import login
 from django.shortcuts import redirect, render
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.http import require_http_methods, require_GET
@@ -26,8 +27,9 @@ def signin(request):
         form = SigninForm(request.POST)
         if form.is_valid():
             #Add the cookie to the client
-            response = redirect('home')
-            response.set_cookie('token', form.token)
+            login(request, form.user)
+            response = redirect('account.home')
+            response.set_cookie('token', form.user.token)
             return response
     return render(request, 'base/signin.html', {'form':form})
 

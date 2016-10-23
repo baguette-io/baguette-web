@@ -3,3 +3,11 @@
     padding: 15px;
     margin: 0 auto;
 }
+
+.font-bold {
+    font-weight: bold;
+}
+
+.font-italic {
+    font-style: italic;
+}

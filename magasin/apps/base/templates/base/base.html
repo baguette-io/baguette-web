@@ -18,6 +18,7 @@
     <link href="{% static "base/css/base.css" %}"  rel="stylesheet">
 
     <link rel="shortcut icon" href="{% static "base/images/ico/favicon.ico" %}">
+
 </head><!--/head-->
 
 <body>
@@ -48,7 +49,7 @@
                         <li class="{%block navprice %}{%endblock %}"><a href="url 'pricing'">{% trans "Pricing" %}</a></li>
                         <li class="{%block navabout %}{%endblock %}"><a href="url 'about'">{% trans "About" %}</a></li>
                         {% if is_connected %}
-                            <li class="{%block navaccount %}{%endblock %}"><a href="">{% trans "My account" %}</a></li>
+                        <li class="{%block navaccount %}{%endblock %}"><a href="{%url 'account.home' %}">{% trans "My account" %}</a></li>
                         {% else %}
                             <li class="{%block navsignin %}{%endblock %}"><a href="{% url 'signin' %}">{% trans "Signin" %}</a></li>
                         {% endif %}
@@ -87,5 +88,13 @@
     <script type="text/javascript" src="{% static "base/js/lightbox.min.js" %}"></script>
     <script type="text/javascript" src="{% static "base/js/wow.min.js" %}"></script>
     <script type="text/javascript" src="{% static "base/js/main.js" %}"></script>
+    <script type="text/javascript">
+        function getCookie(name) {
+              var value = "; " + document.cookie;
+                var parts = value.split("; " + name + "=");
+                  if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+        {% block jsheader %}{% endblock %}
+    </script>
 </body>
 </html>
