@@ -33,6 +33,7 @@ setup(
                              'static/base/fonts/*',
                              'static/base/images/*',
                              'static/base/images/*/*',
+                             'static/base/images/*/*/*',
                             ],
     },
     extras_require={
