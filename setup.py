@@ -27,7 +27,7 @@ setup(
     },
     package_data={
         'magasin.apps.account':['templates/*'],
-        'magasin.apps.base':['templates/*', 'static/*'],
+        'magasin.apps.base':['templates/base/*', 'static/base/*/*/*'],
     },
     extras_require={
         'testing': [
