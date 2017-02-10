@@ -34,6 +34,7 @@ setup(
                              'static/base/images/*',
                              'static/base/images/*/*',
                              'static/base/images/*/*/*',
+                              'static/base/images/*/*/*/*',
                             ],
     },
     extras_require={
