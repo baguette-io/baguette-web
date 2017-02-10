@@ -29,7 +29,7 @@ CONFIG.read(os.environ.get('MAGASIN_INI', '/etc/magasin.ini'))
 DEBUG = CONFIG.get('general', 'debug')
 API_URL = CONFIG.get('general', 'api')
 STATIC_URL = CONFIG.get('general', 'static_url')
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = CONFIG.get('general', 'static_root') or os.path.join(BASE_DIR, "static")
 
 DATABASES = {
     'default': {
