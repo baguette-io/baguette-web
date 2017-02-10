@@ -25,6 +25,10 @@ setup(
             'magasin=magasin.manage:main',
         ],
     },
+    package_data={
+        'magasin.apps.account':['templates/*'],
+        'magasin.apps.base':['templates/*', 'static/*'],
+    },
     extras_require={
         'testing': [
             'mock==2.0.0',
