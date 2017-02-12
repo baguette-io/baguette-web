@@ -33,9 +33,9 @@ class APIAuthBackend(object):
             user = User(email=email)
             user.is_staff = False
             user.is_superuser = False
+            user.save()
         finally:
             user.token = response['result']['token']#pylint:disable=unsubscriptable-object
-            #user.save()
         return user
 
 

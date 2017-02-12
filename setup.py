@@ -26,7 +26,7 @@ setup(
         ],
     },
     package_data={
-        'magasin.apps.account':['templates/*'],
+        'magasin.apps.account':['templates/account/*'],
         'magasin.apps.base':['templates/base/*',
                              'static/base/css/*',
                              'static/base/js/*',
