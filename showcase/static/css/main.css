@@ -3,8 +3,8 @@
  * 1. navbar
  * 2. header
  * 3. windows
- *
- *
+ * 4. main
+ * 5. features
  *
  */
 
@@ -56,6 +56,7 @@ body {
 /*3. windows */
 .windows {
     margin-top:50px;
+    margin-bottom:50px;
 }
 
 .window {
@@ -117,3 +118,25 @@ body {
   	font-size: 10px;
 	padding-left: 5px;
 }
+
+/* 4. main */
+
+.main {
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.main h2 {
+    margin-top :20px;
+    margin-bottom :50px;
+    font-weight: 300;
+}
+
+.main h3 {
+    font-weight: 300;
+}
+
+.row > .info {
+    margin-bottom: 50px;
+}
+/* 5. features */
