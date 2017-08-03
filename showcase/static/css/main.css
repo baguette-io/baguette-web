@@ -3,8 +3,8 @@
  * 1. navbar
  * 2. header
  * 3. windows
- * 4. main
- * 5. features
+ * 4. main features
+ * 5. company features
  *
  */
 
@@ -119,24 +119,43 @@ body {
 	padding-left: 5px;
 }
 
-/* 4. main */
+/* 4. main features */
 
-.main {
+.mainfeatures {
     background-color: #fff;
     border-radius: 4px;
 }
 
-.main h2 {
+.mainfeatures h2 {
     margin-top :20px;
     margin-bottom :50px;
     font-weight: 300;
 }
 
-.main h3 {
+.mainfeatures h3 {
     font-weight: 300;
 }
 
-.row > .info {
+.mainfeatures .row > .info {
     margin-bottom: 50px;
 }
-/* 5. features */
+/* 5. company features */
+
+.companyfeatures {
+    border-radius: 4px;
+}
+
+.companyfeatures h2 {
+    margin-top :20px;
+    margin-bottom :50px;
+    font-weight: 300;
+}
+
+.companyfeatures h3 {
+    font-weight: 300;
+}
+
+.companyfeatures .row > .info {
+    margin-bottom: 50px;
+}
+/* 6. */
