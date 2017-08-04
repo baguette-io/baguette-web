@@ -1,25 +1,16 @@
 /*
  * table of contents:
  * 1. navbar
- * 2. header
- * 3. windows
- * 4. main features
- * 5. company features
+ * 2. ribbon
+ * 3. header
+ * 4. windows
+ * 5. main features
+ * 6. company features
  *
  */
-
-
-@font-face {
-    font-family: 'testing';
-    src: url('static/fonts/testing.otf');
-    font-weight: normal;
-    font-style: normal;
-}
 .navbar-brand {
     color: rgba(0,0,0,.5) !important;
     font-size: 14px;
-    /*font-family: 'testingg';
-    text-transform: uppercase;*/
     font-weight: normal;
     font-style: normal;
 }
@@ -29,6 +20,7 @@ body {
 }
 
 /* 1. navbar */
+
 .navbar-nav {
     font-size: 14px;
 }
@@ -38,7 +30,46 @@ body {
     font-size: 14px;
 }
 
-/* 2. header : headtitle */
+/* 2. ribbons */
+
+.corner-ribbon{
+  width: 200px;
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+  color: #fff;
+  z-index: 1;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.stick{
+  position:fixed;
+}
+
+.corner-ribbon.shadow{
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+
+.corner-ribbon.top-left{
+  top: 25px;
+  left: -50px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.top-right{
+  top: 25px;
+  right: -50px;
+  left: auto;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+/* 3. header : headtitle */
 
 .headtitle {
     margin-top :50px;
@@ -53,7 +84,7 @@ body {
     font-weight: 300;
 }
 
-/*3. windows */
+/*4. windows */
 .windows {
     margin-top:50px;
     margin-bottom:50px;
@@ -119,7 +150,7 @@ body {
 	padding-left: 5px;
 }
 
-/* 4. main features */
+/* 5. main features */
 
 .mainfeatures {
     background-color: #fff;
@@ -139,7 +170,7 @@ body {
 .mainfeatures .row > .info {
     margin-bottom: 50px;
 }
-/* 5. company features */
+/* 6. company features */
 
 .companyfeatures {
     border-radius: 4px;
