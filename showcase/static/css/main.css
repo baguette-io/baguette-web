@@ -6,7 +6,7 @@
  * 4. windows
  * 5. main features
  * 6. company features
- *
+ * 7. footer
  */
 .navbar-brand {
     color: rgba(0,0,0,.5) !important;
@@ -178,4 +178,10 @@ body {
 .companyfeatures .row > .info {
     margin-bottom: 50px;
 }
-/* 6. */
+
+/* 7. footer */
+.footer-link {
+    text-decoration: none;
+    color: #fff;
+}
+
