@@ -33,21 +33,18 @@ body {
 /* 2. ribbons */
 
 .corner-ribbon{
-  width: 200px;
+  width: 100px;
   position: absolute;
-  top: 25px;
-  left: -50px;
+  top: 12.5px;
+  left: -25px;
   text-align: center;
-  line-height: 50px;
+  line-height: 25px;
   letter-spacing: 1px;
   color: #fff;
   z-index: 1;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-}
-
-.corner-ribbon.stick{
-  position:fixed;
+  font-weight:bold;
 }
 
 .corner-ribbon.shadow{
@@ -55,18 +52,10 @@ body {
 }
 
 .corner-ribbon.top-left{
-  top: 25px;
-  left: -50px;
+  top: 12.5;
+  left: -25;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-}
-
-.corner-ribbon.top-right{
-  top: 25px;
-  right: -50px;
-  left: auto;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
 }
 
 /* 3. header : headtitle */
