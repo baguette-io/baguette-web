@@ -48,12 +48,12 @@
                     <div class="col-sm-1 info"><i class="fa fa-code fa-5x text-danger" aria-hidden="true"></i></div>
                     <div class="col-sm-3 info">
                         <h3>Language agnostic</h3>
-                        <p>Use your preffered language: node, ruby, perl, java, python. We don't care.</p>
+                        <p>Use your prefered language: node, ruby, perl, java, python. We don't care.</p>
                     </div>
                     <div class="col-sm-1 info text-right"><i class="fa fa-sun-o fa-5x text-danger" aria-hidden="true"></i></div>
                     <div class="col-sm-3 info">
                         <h3>Protocols</h3>
-                        <p>We support not only HTTP[S], but all TCP services</p>
+                        <p>We support not only HTTP[S], but also TCP and UDP services</p>
                     </div>
 	    		</div>
         		<div class="row">
