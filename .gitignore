@@ -7,3 +7,7 @@ venv/
 build/
 dist/
 .coverage
+#
+node_modules/
+npm-debug.log
+.nuxt
