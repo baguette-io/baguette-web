@@ -1,53 +1,170 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+    <div class="corner-ribbon top-left bg-danger">Beta</div>
+    <nav class="navbar navbar-toggleable-md navbar-light">
+	    <div class="container">
+	      <a class="navbar-brand" href="#">
+          	<img src="/images/favicon.png" class="d-inline-block" width="50" height="50"> baguette.io
+          </a>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="btn btn-danger" href="#" role="button">Get started</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Documentation</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
+              <li class="">
+                  <a class="nav-link" href="#">Log in</a>
+              </li>
+              <li class="">
+                  <a class="btn btn-danger" href="#" role="button">Sign up</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+	<main class="header" role="header">
+    	<div class="container headtitle">
+    		<div class="row justify-content-md-center">
+				<div class="col-12 col-md-auto">
+					<h1>Continuous integration and deployment platform</h1>
+				</div>
+				<div class="col-12 col-md-auto">
+    				<h6>Test and deploy your code, micro service, docker, simply</h6>
+				</div>
+			</div>
+        </div>
+        <div class="container windows">
+            <div class="row justify-content-md-center">
+                <div class="window">
+                    <div class="window-header">
+                        <span class="window-bullet red"></span>
+                        <span class="window-bullet yellow"></span>
+                        <span class="window-bullet green"></span>
+                        <span class="window-title">~/code/my-project/</span>
+                    </div>
+                    <div class="window-body">
+                        <ul class="list-unstyled">
+                            <li><span class="prefix">[my-project(master)]$</span><span class="command">baguette app-create</span></li>
+                            <li><span class="output">my-project created</span></li>
+                            <li><span class="output">Push to baguette.io remote to deploy your app</span></li>
+                            <li><span class="prefix">[my-project(master)]$</span><span class="command">git push baguette.io master</span></li>
+                            <li><span class="output">deploying my-project(master)</span></li>
+                            <li><span class="output">App healthy, you can access it using : <u>https://user.my-project.projects.baguette.io</u></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="mainfeatures" role="mainfeatures">
+        <div class="container-fluid">
+            <div class="row justify-content-md-center">
+                <h2>Simple and powerful platform as a service</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 info text-right"><i class="fa fa-cogs fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>Automation</h3>
+                    <p>Simply test and deploy your services by doing a <b>git push baguette.io</b></p>
+                </div>
+                <div class="col-sm-1 info"><i class="fa fa-code fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>Language agnostic</h3>
+                    <p>Use your preffered language: node, ruby, perl, java, python. We don't care.</p>
+                </div>
+                <div class="col-sm-1 info text-right"><i class="fa fa-sun-o fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>Protocols</h3>
+                    <p>We support not only HTTP[S], but all TCP services</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 info"><i class="fa fa-heartbeat fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>Healthchecks</h3>
+                    <p>detect errors on your services using our simple heartbeat system</p>
+                </div>
+                <div class="col-sm-1 info text-right"><i class="fa fa-sitemap fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>Scalability</h3>
+                    <p>services auto scale given your choices(cpu/memory/network usage)</p>
+                </div>
+                <div class="col-sm-1 info text-right"><i class="fa fa-tachometer fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>Monitoring</h3>
+                    <p>real time data and logging give you infos about your services status</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <main class="companyfeatures" role="companyfeatures">
+        <div class="container-fluid">
+            <div class="row justify-content-md-center">
+                <h2>Simple and built for companies</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 info text-right"><i class="fa fa-users fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>Organizations</h3>
+                    <p>Each app belongs to an organization. And you can manage them using granulary permissions</p>
+                </div>
+                <div class="col-sm-1 info"><i class="fa fa-ban fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>Network isolation</h3>
+                    <p>Each organization is isolated from others, and every app belongs to a VPC, you can create as you need</p>
+                </div>
+                <div class="col-sm-1 info text-right"><i class="fa fa-globe fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>Regions</h3>
+                    <p>Choose on which cloud provider/region you want to create your VPC, and then your apps</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 info"><i class="fa fa-star fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>API</h3>
+                    <p>You can use baguette.io using a web interface, a CLI tool but also using our open API</p>
+                </div>
+                <div class="col-sm-1 info text-right"><i class="fa fa-code-fork fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>PaaS/Host it</h3>
+                    <p>If you want to host our solution, instead of using our paas, you just can. Our code will also be available for you (GPL 3.0)</p>
+                </div>
+                <div class="col-sm-1 info text-right"><i class="fa fa-rocket fa-5x text-danger" aria-hidden="true"></i></div>
+                <div class="col-sm-3 info">
+                    <h3>Secure deployment</h3>
+                    <p>By default we are using the blue/green strategy, but you can use the canary one</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <main class="footer" role="footer">
+        <div class="container-fluid">
+            <div class="footer row justify-content-md-center bg-danger text-white">
+                <p>&copy; 2017 baguette.io</p>
+            </div>
+        </div>
+    </main>
+    <nuxt />
 </template>
 
-<style>
-html
-{
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<script>
+export default {
+  head: {
+    bodyAttrs: {
+      class: 'bg-faded'
+    }
+  }
 }
-*, *:before, *:after
-{
-  box-sizing: border-box;
-  margin: 0;
-}
-.button--green
-{
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-.button--green:hover
-{
-  color: #fff;
-  background-color: #3b8070;
-}
-.button--grey
-{
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-.button--grey:hover
-{
-  color: #fff;
-  background-color: #35495e;
-}
-</style>
+</script>
