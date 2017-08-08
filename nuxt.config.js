@@ -6,6 +6,18 @@ module.exports = {
     '@nuxtjs/axios'
   ],
   /*
+  ** Envs
+  */
+  env: {
+        endpoint: process.env.ENDPOINT
+  },
+  /*
+  ** Plugins
+  */
+  plugins: [
+    '~plugins/axios'
+  ],
+  /*
   ** Headers of the page
   */
   head: {
@@ -31,6 +43,9 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    vendor: [
+        'axios'
+    ],
     /*
     ** Run ESLINT on save
     */

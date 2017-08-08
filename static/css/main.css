@@ -7,6 +7,7 @@
  * 5. main features
  * 6. company features
  * 7. footer
+ * 8. identification : signup/login
  */
 .navbar-brand {
     color: rgba(0,0,0,.5) !important;
@@ -180,8 +181,23 @@ body {
 }
 
 /* 7. footer */
+.footer {
+    margin-top:50px;
+}
+
 .footer-link {
     text-decoration: none;
     color: #fff;
+}
+
+/* 8. identification */
+.identification h2 {
+    margin-top :20px;
+    margin-bottom :50px;
+    font-weight: 300;
+}
+
+.identification h3 {
+    font-weight: 300;
 }
 
