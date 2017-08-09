@@ -88,14 +88,17 @@ export default {
       vm.emailError = false
       vm.passwordError = false
       try {
-        let data = await axios.post('/accounts/register/', {
-          username: this.username,
-          email: this.email,
-          password: this.password,
-          confirm_password: this.password
+        const payload = await axios.post('/accounts/register/', {
+          username: vm.username,
+          email: vm.email,
+          password: vm.password,
+          confirm_password: vm.password
         })
-        console.log(data)
+        let key = payload.data.key.private
+        vm.$store.commit('save_key', key)
+        vm.$router.replace('/signup_success')
       } catch (error) {
+        console.log(error)
         const data = error.response.data
         Object.keys(data).forEach(function (key) {
           if (key === 'username') {

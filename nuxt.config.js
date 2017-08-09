@@ -9,7 +9,7 @@ module.exports = {
   ** Envs
   */
   env: {
-        endpoint: process.env.ENDPOINT
+    endpoint: process.env.ENDPOINT
   },
   /*
   ** Plugins
