@@ -1,7 +1,7 @@
 <template>
   <div class="container identification bg-primary-text">
     <div class="row justify-content-md-center">
-        <nuxt/>
+        <nuxt />
     </div>
   </div>
 </template>

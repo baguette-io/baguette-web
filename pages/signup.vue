@@ -1,30 +1,66 @@
 <template>
-    <div>
-        <h2 class="title ml-sm-5">Sign up</h2>
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-5 col-md-4">
+                <h2 class="title">Sign up</h2>
+            </div>
+        </div>
         <form class="form-horizontal" method="post" v-on:submit.prevent="signup" action="">
-            <div class="form-group row">
+            <div class="form-group row" v-bind:class="{ 'has-danger': usernameError }">
+                <div class="col-md-4"></div>
                 <label for="username" class="sr-only">Username</label>
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group col-md-4">
                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
                     <input type="text" name="username" v-model="username" class="form-control" placeholder="Username" required="" />
                 </div>
+                <div class="col-md-4">
+                    <div class="form-control-feedback">
+                        <template v-if="usernameError">
+                            <span class="text-danger align-middle">
+                                <i class="fa fa-close">{{ usernameError }}</i>
+                            </span>
+                        </template>
+                    </div>
+                </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" v-bind:class="{ 'has-danger': emailError }">
+                <div class="col-md-4"></div>
                 <label for="email" class="sr-only">Email</label>
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group col-md-4">
                     <div class="input-group-addon"><i class="fa fa-at"></i></div>
                     <input type="text" name="email" v-model="email" class="form-control" placeholder="you@domain.com" required="" />
                 </div>
+                <div class="col-md-4">
+                    <div class="form-control-feedback">
+                        <template v-if="emailError">
+                            <span class="text-danger align-middle">
+                                <i class="fa fa-close">{{ emailError }}</i>
+                            </span>
+                        </template>
+                    </div>
+                </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" v-bind:class="{ 'has-danger': passwordError }">
+                <div class="col-md-4"></div>
                 <label for="password" class="sr-only">Password</label>
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group col-md-4">
                     <div class="input-group-addon"><i class="fa fa-key"></i></div>
                     <input type="password" name="password" v-model="password" class="form-control" placeholder="P@ssw0rd!" required="" />
                 </div>
+                <div class="col-md-4">
+                    <div class="form-control-feedback">
+                        <template v-if="passwordError">
+                            <span class="text-danger align-middle">
+                                <i class="fa fa-close">{{ passwordError }}</i>
+                            </span>
+                        </template>
+                    </div>
+                </div>
             </div>
             <div class="row">
-                <input type="submit" class="btn btn-block btn-secondary text-danger" value="Create account" />
+                <div class="offset-md-4 col-md-4">
+                    <input type="submit" class="btn btn-block btn-secondary text-danger" value="Create account" />
+                </div>
             </div>
         </form>
     </div>
@@ -39,18 +75,38 @@ export default {
     return {
       username: '',
       email: '',
-      password: ''
+      password: '',
+      usernameError: false,
+      emailError: false,
+      passwordError: false
     }
   },
   methods: {
     async signup () {
-      console.log(axios)
-      await axios.post('/accounts/register/', {
-        username: this.username,
-        email: this.email,
-        password: this.password,
-        confirm_password: this.password
-      })
+      const vm = this
+      vm.usernameError = false
+      vm.emailError = false
+      vm.passwordError = false
+      try {
+        let data = await axios.post('/accounts/register/', {
+          username: this.username,
+          email: this.email,
+          password: this.password,
+          confirm_password: this.password
+        })
+        console.log(data)
+      } catch (error) {
+        const data = error.response.data
+        Object.keys(data).forEach(function (key) {
+          if (key === 'username') {
+            vm.usernameError = data[key][0]
+          } else if (key === 'email') {
+            vm.emailError = data[key][0]
+          } else if (key === 'password') {
+            vm.passwordError = data[key][0]
+          }
+        })
+      }
     }
   }
 }
