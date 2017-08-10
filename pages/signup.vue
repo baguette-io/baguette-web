@@ -95,7 +95,9 @@ export default {
           confirm_password: vm.password
         })
         let key = payload.data.key.private
+        let username = payload.data.account.username
         vm.$store.commit('save_key', key)
+        vm.$store.commit('save_username', username)
         vm.$router.replace('/signup_success')
       } catch (error) {
         const data = error.response.data

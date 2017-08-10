@@ -7,13 +7,18 @@
         </div>
         <div class="row">
             <div class="offset-md-5 col-md-4">
-                <div class="row">
-                    We have generated for you a private key:
+                <div class="text-center">
+                    <b>{{ username }}</b>, we have generated for you a private key:
                 </div>
                 <div class="row">
-                    <a v-bind:href="url" class="col-md-10 btn btn-block btn-secondary text-danger" id="download">Please, save it.</a>
+                    <a href="" class="btn btn-block btn-secondary text-danger" id="download">Please, save it.</a>
                 </div>
-                <p><small><u>We don't store the private key in our databases.</u></small></p>
+                <div class="text-center">
+                    <p><small><u>We don't store the private key in our databases.</u></small></p>
+                </div>
+                <div class="row">
+                    <a class="btn btn-block btn-danger" role="button" href="/login">Now, you can Log in</a>
+                </div>
             </div>
         </div>
     </div>
@@ -23,7 +28,7 @@
 function downloadFile (vm) {
   const blob = new Blob([vm.$store.state.private_key], {type: 'text/plain'})
   let a = document.getElementById('download')
-  a.download = 'default_baguette.rsa'
+  a.download = vm.username + '_default_baguette.rsa'
   a.href = window.URL.createObjectURL(blob)
   a.dataset.downloadurl = ['text/plain', a.download, a.href].join(':')
   vm.$store.state.private_key = null
@@ -33,14 +38,17 @@ export default {
   layout: 'identification',
   data () {
     return {
-      url: ''
+      username: ''
     }
   },
   mounted () {
-    console.log('mounted')
     const vm = this
+    if (vm.$store.state.username === null) {
+      vm.$router.replace('/signup')
+    }
+    vm.username = vm.$store.state.username
+    vm.$store.state.username = null
     downloadFile(vm)
   }
 }
 </script>
-
