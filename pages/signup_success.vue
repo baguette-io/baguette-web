@@ -31,7 +31,6 @@ function downloadFile (vm) {
   a.download = vm.username + '_default_baguette.rsa'
   a.href = window.URL.createObjectURL(blob)
   a.dataset.downloadurl = ['text/plain', a.download, a.href].join(':')
-  vm.$store.state.private_key = null
 }
 
 export default {
@@ -47,8 +46,8 @@ export default {
       vm.$router.replace('/signup')
     }
     vm.username = vm.$store.state.username
-    vm.$store.state.username = null
     downloadFile(vm)
+    vm.$store.commit('reset')
   }
 }
 </script>

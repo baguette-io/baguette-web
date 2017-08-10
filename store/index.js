@@ -13,11 +13,16 @@ const store = () => new Vuex.Store({
     save_username (state, username) {
       state.username = username
     },
-    login (state, username, token) {
-      state.username = username
-      state.auth_token = token
+    login (state, payload) {
+      state.username = payload.username
+      state.auth_token = payload.token
     },
     logout (state, token) {
+      state.username = null
+      state.auth_token = null
+    },
+    reset (state) {
+      state.private_key = null
       state.username = null
       state.auth_token = null
     }
