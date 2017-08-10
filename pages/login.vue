@@ -2,10 +2,21 @@
     <div class="container">
         <div class="row">
             <div class="offset-md-5 col-md-4">
-                <h2 class="title">Sign up</h2>
+                <h2 class="title">Log in</h2>
             </div>
         </div>
-        <form class="form-horizontal" method="post" v-on:submit.prevent="signup" action="">
+        <form class="form-horizontal" method="post" v-on:submit.prevent="login" action="">
+            <div class="form-group row" v-bind:class="{ 'has-danger': generalError }">
+                <template v-if="generalError">
+                    <div class="col-md-4"></div>
+                    <label for="error" class="sr-only">Error</label>
+                    <div class="col-md-4">
+                        <div class="text-center text-danger">
+                        {{ generalError }}
+                        </div>
+                    </div>
+                </template>
+            </div>
             <div class="form-group row" v-bind:class="{ 'has-danger': usernameError }">
                 <div class="col-md-4"></div>
                 <label for="username" class="sr-only">Username</label>
@@ -18,23 +29,6 @@
                         <template v-if="usernameError">
                             <span class="text-danger align-middle">
                                 <i class="fa fa-close">{{ usernameError }}</i>
-                            </span>
-                        </template>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row" v-bind:class="{ 'has-danger': emailError }">
-                <div class="col-md-4"></div>
-                <label for="email" class="sr-only">Email</label>
-                <div class="input-group col-md-4">
-                    <div class="input-group-addon"><i class="fa fa-at"></i></div>
-                    <input type="text" name="email" v-model="email" class="form-control" placeholder="you@domain.com" required="" />
-                </div>
-                <div class="col-md-4">
-                    <div class="form-control-feedback">
-                        <template v-if="emailError">
-                            <span class="text-danger align-middle">
-                                <i class="fa fa-close">{{ emailError }}</i>
                             </span>
                         </template>
                     </div>
@@ -59,7 +53,7 @@
             </div>
             <div class="row">
                 <div class="offset-md-4 col-md-4">
-                    <input type="submit" class="btn btn-block btn-secondary text-danger" value="Create account" />
+                    <input type="submit" class="btn btn-block btn-secondary text-danger" value="Log in" />
                 </div>
             </div>
         </form>
@@ -74,38 +68,32 @@ export default {
   data () {
     return {
       username: '',
-      email: '',
       password: '',
       usernameError: false,
-      emailError: false,
-      passwordError: false
+      passwordError: false,
+      generalError: false
     }
   },
   methods: {
-    async signup () {
+    async login () {
       const vm = this
       vm.usernameError = false
-      vm.emailError = false
       vm.passwordError = false
+      vm.generalError = false
       try {
-        const payload = await axios.post('/accounts/register/', {
+        await axios.post('/accounts/login/', {
           username: vm.username,
-          email: vm.email,
-          password: vm.password,
-          confirm_password: vm.password
+          password: vm.password
         })
-        let key = payload.data.key.private
-        vm.$store.commit('save_key', key)
-        vm.$router.replace('/signup_success')
       } catch (error) {
         const data = error.response.data
         Object.keys(data).forEach(function (key) {
           if (key === 'username') {
             vm.usernameError = data[key][0]
-          } else if (key === 'email') {
-            vm.emailError = data[key][0]
           } else if (key === 'password') {
             vm.passwordError = data[key][0]
+          } else if (key === 'non_field_errors') {
+            vm.generalError = data[key][0]
           }
         })
       }

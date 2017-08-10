@@ -37,6 +37,7 @@
 	    <div class="mainfeatures">
         	<div class="container-fluid">
         		<div class="row justify-content-md-center">
+                    <h2>Use cases</h2>
                     <h2>Simple and powerful platform as a service</h2>
 	    		</div>
         		<div class="row">
