@@ -12,6 +12,14 @@ const store = () => new Vuex.Store({
     },
     save_username (state, username) {
       state.username = username
+    },
+    login (state, username, token) {
+      state.username = username
+      state.auth_token = token
+    },
+    logout (state, token) {
+      state.username = null
+      state.auth_token = null
     }
   }
 })

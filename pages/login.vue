@@ -81,10 +81,11 @@ export default {
       vm.passwordError = false
       vm.generalError = false
       try {
-        await axios.post('/accounts/login/', {
+        let payload = await axios.post('/accounts/login/', {
           username: vm.username,
           password: vm.password
         })
+        vm.$store.commit('login', vm.username, payload.data.token)
       } catch (error) {
         const data = error.response.data
         Object.keys(data).forEach(function (key) {
