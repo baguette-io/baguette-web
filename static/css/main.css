@@ -9,9 +9,17 @@
  * 7. footer
  * 8. identification : signup/login
  */
+
+@font-face {
+    font-family: 'giorgio';
+    src: url('/fonts/giorgio.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 .navbar-brand {
+    font-family: giorgio;
     color: rgba(0,0,0,.5) !important;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
     font-style: normal;
 }
