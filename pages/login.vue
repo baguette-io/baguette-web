@@ -88,7 +88,7 @@ export default {
         const token = payload.data.token
         const username = vm.username
         vm.$store.commit('login', {username, token})
-        vm.$router.replace('/admin/')
+        vm.$router.replace('/dashboard/')
       } catch (error) {
         const data = error.response.data
         Object.keys(data).forEach(function (key) {

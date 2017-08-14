@@ -1,18 +1,18 @@
 <template>
   <div>
-    <admin-navbar />
+    <dashboard-navbar />
     <nuxt/>
     <default-footer />
   </div>
 </template>
 
 <script>
-import AdminNavbar from '../components/adminnavbar'
+import DashboardNavbar from '../components/dashboardnavbar'
 import DefaultFooter from '../components/defaultfooter'
 export default {
   layout: 'default',
   components: {
-    AdminNavbar,
+    DashboardNavbar,
     DefaultFooter
   }
 }
