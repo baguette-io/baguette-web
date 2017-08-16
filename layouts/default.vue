@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import DefaultFooter from '../components/defaultfooter'
-import DefaultNavbar from '../components/defaultnavbar'
+import DefaultFooter from '../components/footer'
+import DefaultNavbar from '../components/navbar'
 export default {
   layout: 'default',
   components: {

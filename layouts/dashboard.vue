@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import DashboardNavbar from '../components/dashboardnavbar'
-import DefaultFooter from '../components/defaultfooter'
+import DashboardNavbar from '../components/dashboard/navbar'
+import DefaultFooter from '../components/footer'
 export default {
   layout: 'default',
   components: {
