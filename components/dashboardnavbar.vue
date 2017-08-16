@@ -2,7 +2,7 @@
     <nav class="navbar navbar-toggleable-md navbar-light">
 	    <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="/images/favicon.png" class="d-inline-block" width="50" height="50"> baguette.io
+                baguette.io
             </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto"></ul>
