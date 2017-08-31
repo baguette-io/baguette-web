@@ -4,12 +4,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <select class="custom-select text-weight-light">
-                        <option selected="">Choose an organization</option>
-                        <option v-for="orga in orgas.results" v-bind:value="orga.name">
-                            {{ orga.name }} 
-                        </option>
-                    </select>
+                    <div class="dropdown shown">
+                        <button class="btn dropdown-toggle btn-outline-danger" href="#" role="button" id="dropdownOrganization" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Choose an organization
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownOrganization">
+                            <a class="dropdown-item" v-for="orga in orgas.results" v-bind:href="'/organization/' + orga.name">
+                                {{ orga.name }} 
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-sm-3">
