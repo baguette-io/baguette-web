@@ -218,3 +218,9 @@ body {
 .text-weight-light {
     font-weight: 100;
 }
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
