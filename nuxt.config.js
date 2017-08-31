@@ -15,7 +15,8 @@ module.exports = {
   ** Plugins
   */
   plugins: [
-    '~plugins/axios'
+    '~plugins/axios',
+    '~plugins/filters'
   ],
   /*
   ** Headers of the page
