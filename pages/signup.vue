@@ -1,7 +1,8 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="offset-md-5 col-md-4">
+            <div class="col-md-5"></div>
+            <div class="col-md-4">
                 <h2 class="title">Sign up</h2>
             </div>
         </div>
@@ -57,9 +58,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="offset-md-4 col-md-4">
-                    <input type="submit" class="btn btn-block btn-secondary text-danger" value="Create account" />
+            <div class="row"> 
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <input type="submit" class="btn btn-block btn-outline-danger" value="Create account" />
                 </div>
             </div>
         </form>
