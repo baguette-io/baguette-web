@@ -8,6 +8,7 @@
  * 6. company features
  * 7. footer
  * 8. identification : signup/login
+ * 9. dashboard
  */
 
 @font-face {
@@ -212,4 +213,8 @@ body {
 /* 9. dashboard */
 .dashboard h1 {
     font-weight: 300;
+}
+
+.text-weight-light {
+    font-weight: 100;
 }

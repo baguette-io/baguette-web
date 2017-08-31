@@ -1,15 +1,39 @@
 <template>
     <div>
-        <select class="custom-select">
-            <option selected="">Choose an organization</option>
-            <option v-for="orga in orgas.results" v-bind:value="orga.name">
-               {{ orga.name }} 
-            </option>
-        </select>
-        <h1>Dashboard</h1>
-        <h2>{{ keys.count }} / {{ quotas.max_keys.value }}</h2>
-        <h2>{{ orgas.count }} / {{ quotas.max_orgas.value }}</h2>
-        Wesh gro
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <select class="custom-select">
+                        <option selected="">Choose an organization</option>
+                        <option v-for="orga in orgas.results" v-bind:value="orga.name">
+                           {{ orga.name }} 
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"><h1>Dashboard</h1></div>
+                <div class="col-md-3"></div>
+                <div class="col-sm-3">
+                    <small class="text-muted text-uppercase text-weight-light">organizations</small>
+                    <div class="row">
+                        <div class="col">
+                            <p class="h6">{{ orgas.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_orgas.value | int }}</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <small class="text-muted text-uppercase text-weight-light">keys</small>
+                    <div class="row">
+                        <div class="col">
+                            <p class="h6">{{ keys.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_keys.value | int }}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
