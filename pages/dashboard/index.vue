@@ -9,9 +9,9 @@
                             Choose an organization
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownOrganization">
-                            <a class="dropdown-item" v-for="orga in orgas.results" v-bind:href="'/organization/' + orga.name">
+                            <nuxt-link class="dropdown-item" v-for="orga in orgas.results" :key="orga.name" v-bind:to="'/dashboard/organizations/' + orga.name">
                                 {{ orga.name }} 
-                            </a>
+                            </nuxt-link>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
 import axios from '~/plugins/axios'
 
 export default {
-  // middleware: 'auth',
+  middleware: 'auth',
   layout: 'dashboard',
   async asyncData ({ store, error }) {
     const token = store.state.auth_token
