@@ -101,10 +101,10 @@ export default {
     let quotas = await axios.get('/quotas/', {
       headers: {'Authorization': 'JWT ' + token}
     })
-    let keys = await axios.get('/keys/', {
+    const keys = await axios.get('/keys/', {
       headers: {'Authorization': 'JWT ' + token}
     })
-    let orgas = await axios.get('/organizations/', {
+    const orgas = await axios.get('/organizations/', {
       headers: {'Authorization': 'JWT ' + token}
     })
     quotas = {max_keys: quotas.data['results'][0], max_orgas: quotas.data['results'][1]}
