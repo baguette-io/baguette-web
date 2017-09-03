@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" style="min-height: 500px;">
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-4">
