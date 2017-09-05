@@ -1,0 +1,20 @@
+/*
+ * table of contents:
+ * 1. General
+ */
+
+/* 1. General */
+
+.dashboard h1 {
+    font-weight: 300;
+}
+
+.text-weight-light {
+    font-weight: 100;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
