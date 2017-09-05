@@ -22,7 +22,7 @@
                 <div class="col-md-4"></div>
                 <label for="username" class="sr-only">Username</label>
                 <div class="input-group col-md-4">
-                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                    <div class="input-group-addon"><i class="fa fa-user fa-fw"></i></div>
                     <input type="text" name="username" v-model="username" class="form-control" placeholder="Username" required="" />
                 </div>
                 <div class="col-md-4">
@@ -39,7 +39,7 @@
                 <div class="col-md-4"></div>
                 <label for="password" class="sr-only">Password</label>
                 <div class="input-group col-md-4">
-                    <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                    <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
                     <input type="password" name="password" v-model="password" class="form-control" placeholder="P@ssw0rd!" required="" />
                 </div>
                 <div class="col-md-4">
