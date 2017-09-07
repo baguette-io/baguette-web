@@ -49,6 +49,12 @@
                <div class="col-md-6">
                     <list-events />
                 </div>
+               <div class="col-md-3">
+                    <list-organizations :orgas="orgas" />
+                </div>
+               <div class="col-md-3">
+                    <list-keys :keys="keys" />
+                </div>
             </div>
         </div>
     </div>
@@ -59,6 +65,8 @@ import axios from '~/plugins/axios'
 import CreateKey from '~/components/dashboard/create/key'
 import CreateOrganization from '~/components/dashboard/create/organization'
 import ListEvents from '~/components/dashboard/list/events'
+import ListKeys from '~/components/dashboard/list/keys'
+import ListOrganizations from '~/components/dashboard/list/organizations'
 
 export default {
   middleware: 'auth',
@@ -66,7 +74,9 @@ export default {
   components: {
     CreateKey,
     CreateOrganization,
-    ListEvents
+    ListEvents,
+    ListKeys,
+    ListOrganizations
   },
   async asyncData ({ store, error }) {
     const token = store.state.auth_token
