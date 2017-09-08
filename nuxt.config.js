@@ -37,9 +37,15 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/images/favicon.png' },
       { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css'},
-      { rel: 'stylesheet', href: '/css/main.css'},
       { rel: 'stylesheet', href: '/css/dashboard.css'},
-      { rel: 'stylesheet', href: '/css/modal.css'}
+      { rel: 'stylesheet', href: '/css/footer.css'},
+      { rel: 'stylesheet', href: '/css/home.css'},
+      { rel: 'stylesheet', href: '/css/identification.css'},
+      { rel: 'stylesheet', href: '/css/main.css'},
+      { rel: 'stylesheet', href: '/css/modal.css'},
+      { rel: 'stylesheet', href: '/css/navbar.css'},
+      { rel: 'stylesheet', href: '/css/ribbon.css'},
+      { rel: 'stylesheet', href: '/css/window.css'}
     ]
   },
   /*

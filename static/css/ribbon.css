@@ -1,0 +1,31 @@
+/*
+ * table of contents:
+ * 1. General
+ */
+
+.corner-ribbon{
+  width: 100px;
+  position: absolute;
+  top: 12.5px;
+  left: -25px;
+  text-align: center;
+  line-height: 25px;
+  letter-spacing: 1px;
+  color: #fff;
+  z-index: 1;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  font-weight:bold;
+}
+
+.corner-ribbon.shadow{
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+
+.corner-ribbon.top-left{
+  top: 12.5;
+  left: -25;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+

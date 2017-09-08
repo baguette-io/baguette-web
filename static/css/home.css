@@ -1,0 +1,62 @@
+/*
+ * table of contents:
+ * 1. Head titles
+ * 2. Main features
+ * 3. Company features
+*/
+
+/* 1.  headtitle */
+
+.headtitle {
+    margin-top :50px;
+}
+
+.headtitle h1{
+    font-weight: 300;
+}
+
+.headtitle h6{
+    color: rgb(156,156,156);
+    font-weight: 300;
+}
+
+/* 2. Main features */
+
+.mainfeatures {
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.mainfeatures h2 {
+    margin-top :20px;
+    margin-bottom :50px;
+    font-weight: 300;
+}
+
+.mainfeatures h3 {
+    font-weight: 300;
+}
+
+.mainfeatures .row > .info {
+    margin-bottom: 50px;
+}
+
+/* 3. Company features */
+
+.companyfeatures {
+    border-radius: 4px;
+}
+
+.companyfeatures h2 {
+    margin-top :20px;
+    margin-bottom :50px;
+    font-weight: 300;
+}
+
+.companyfeatures h3 {
+    font-weight: 300;
+}
+
+.companyfeatures .row > .info {
+    margin-bottom: 50px;
+}
