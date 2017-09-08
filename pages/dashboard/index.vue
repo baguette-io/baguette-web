@@ -11,49 +11,45 @@
                             <nuxt-link class="dropdown-item" v-for="orga in orgas.results" :key="orga.name" v-bind:to="'/dashboard/organizations/' + orga.name">
                                 {{ orga.name }} 
                             </nuxt-link>
+                            <div class="dropdown-divider"></div>
+                            <button class="btn btn-block btn-danger" role="button" v-on:click="showCreateOrganization = true">
+                                Create an organization
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3"></div>
                 <create-organization @success="organization_created" :show="showCreateOrganization" @close="showCreateOrganization = false" />
-                <create-key @success="key_created" :show="showCreateKey" @close="showCreateKey = false" />
                 <div class="col-sm-3">
-                    <a class="btn btn-default" href="#" aria-label="Create Organization">
-                        <i class="fa fa-plus-circle text-danger" aria-hidden="true" v-on:click="showCreateOrganization = true" ></i>
-                    </a>
-                    <small class="text-muted text-uppercase text-weight-light">organizations</small>
-                    <div class="row">
-                        <div class="col-sm-2"></div>
-                        <div class="col">
-                            <p class="h6">{{ orgas.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_orgas.value | int }}</span></p>
+                    <nuxt-link to="/dashboard/organizations/" class="text-no-decoration">
+                        <small class="text-muted text-uppercase text-weight-light">organizations</small>
+                        <div class="row">
+                            <div class="col">
+                                <p class="h6">{{ orgas.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_orgas.value | int }}</span></p>
+                            </div>
                         </div>
-                    </div>
+                    </nuxt-link>
                 </div>
                 <div class="col-sm-3">
-                    <a class="btn btn-default" href="#" aria-label="Create Key">
-                        <i class="fa fa-plus-circle text-danger" aria-hidden="true" v-on:click="showCreateKey = true" ></i>
-                    </a>
-                    <small class="text-muted text-uppercase text-weight-light">keys</small>
-                    <div class="row">
-                        <div class="col-sm-2"></div>
-                        <div class="col">
-                            <p class="h6">{{ keys.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_keys.value | int }}</span></p>
+                    <nuxt-link to="/dashboard/keys/" class="text-no-decoration">
+                        <small class="text-muted text-uppercase text-weight-light">keys</small>
+                        <div class="row">
+                            <div class="col">
+                                <p class="h6">{{ keys.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_keys.value | int }}</span></p>
+                            </div>
                         </div>
-                    </div>
+                    </nuxt-link>
                 </div>
             </div>
         </div>
-        <br />
         <div class="container">
             <div class="row">
                <div class="col-md-6">
                     <list-events />
                 </div>
                <div class="col-md-3">
-                    <list-organizations :orgas="orgas" />
                 </div>
                <div class="col-md-3">
-                    <list-keys :keys="keys" />
                 </div>
             </div>
         </div>
@@ -62,21 +58,15 @@
 
 <script>
 import axios from '~/plugins/axios'
-import CreateKey from '~/components/dashboard/create/key'
 import CreateOrganization from '~/components/dashboard/create/organization'
 import ListEvents from '~/components/dashboard/list/events'
-import ListKeys from '~/components/dashboard/list/keys'
-import ListOrganizations from '~/components/dashboard/list/organizations'
 
 export default {
   middleware: 'auth',
   layout: 'dashboard',
   components: {
-    CreateKey,
     CreateOrganization,
-    ListEvents,
-    ListKeys,
-    ListOrganizations
+    ListEvents
   },
   async asyncData ({ store, error }) {
     const token = store.state.auth_token
@@ -94,16 +84,10 @@ export default {
   },
   data: function () {
     return {
-      showCreateKey: false,
       showCreateOrganization: false
     }
   },
   methods: {
-    key_created: function (payload) {
-      const obj = payload.data.name
-      this.$parent.$parent.success(obj, 'Key ', ' imported.')
-      this.keys.count += 1
-    },
     organization_created: function (payload) {
       const obj = payload.data.name
       this.$parent.$parent.success(obj, 'Organization ', ' created.')

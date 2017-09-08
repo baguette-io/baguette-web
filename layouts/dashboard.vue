@@ -1,7 +1,6 @@
 <template>
   <div class="dashboard">
     <dashboard-navbar />
-    <hr />
     <dashboard-notif :prefix.sync="notifPrefix" :suffix.sync="notifSuffix" :isSuccess.sync="isSuccess" :isError.sync="isError" :obj.sync="notifObj" />
     <nuxt/>
     <default-footer />

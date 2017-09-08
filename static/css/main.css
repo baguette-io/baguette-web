@@ -9,3 +9,7 @@ body {
 .text-no-decoration, .text-no-decoration:hover {
     text-decoration: none !important;
 }
+
+.light-h3 {
+    font-size: 24px;
+}
