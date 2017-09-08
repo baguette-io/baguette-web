@@ -2,7 +2,8 @@
     <div style="min-height:500px;">
         <div class="container">
             <div class="row">
-                <create-key @success="key_created" :show="showCreateKey" @close="showCreateKey = false" />
+                <create-key @success="key_created" :show.sync="showCreateKey" @close="showCreateKey = false" />
+                <delete-key :show="showDeleteKey" @close="showDeleteKey = false" />
                 <div class="col-md-3">
                     <span class="h3 light-h3">SSH Keys</span>
                     <div class="row">
@@ -14,7 +15,7 @@
                 </div>
                 <div class="col-md-7"></div>
                 <div class="col-md-2">
-                    <button class="btn btn-block btn-danger" role="button" v-on:click="showCreateKey = true">
+                    <button class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreateKey = true">
                         Import key
                     </button>
                 </div>
@@ -23,7 +24,8 @@
         </div>
         <div class="container">
             <div class="row">
-               <div class="col-md-6">
+               <div class="col-md-2"></div>
+               <div class="col-md-7">
                     <list-keys :objects="keys" />
                 </div>
             </div>
@@ -34,6 +36,7 @@
 <script>
 import axios from '~/plugins/axios'
 import CreateKey from '~/components/dashboard/create/key'
+import DeleteKey from '~/components/dashboard/delete/key'
 import ListKeys from '~/components/dashboard/list/keys'
 
 export default {
@@ -41,6 +44,7 @@ export default {
   layout: 'dashboard',
   components: {
     CreateKey,
+    DeleteKey,
     ListKeys
   },
   async asyncData ({ store, error }) {
@@ -56,7 +60,8 @@ export default {
   },
   data: function () {
     return {
-      showCreateKey: false
+      showCreateKey: false,
+      showDeleteKey: false
     }
   },
   methods: {
@@ -64,6 +69,24 @@ export default {
       const obj = payload.data.name
       this.$parent.$parent.success(obj, 'Key ', ' imported.')
       this.keys.count += 1
+    },
+    async delete_key () {
+      const vm = this
+      const token = vm.$store.state.auth_token
+      try {
+        const payload = await axios.delete('/keys/', {
+          name: vm.name
+        }, {
+          headers: {'Authorization': 'JWT ' + token}
+        })
+        vm.$emit('success', payload)
+        this.close()
+      } catch (exc) {
+        const data = exc.response.data
+        Object.keys(data).forEach(function (key) {
+          vm.error = data[key][0]
+        })
+      }
     }
   }
 }
