@@ -25,8 +25,8 @@
         <div class="container">
             <div class="row">
                <div class="col-md-2"></div>
-               <div class="col-md-7">
-                    <list-keys :objects="keys" />
+               <div class="col-md-8">
+                    <list-keys :objects="keys" @delete-key="showDeleteKey = true"/>
                 </div>
             </div>
         </div>

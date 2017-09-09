@@ -5,10 +5,10 @@
                 <div class="modal-wrapper">
                     <div class="modal-container">
                         <div class="modal-body">
-                            Are you sure you want to delete {{ key }} ?
+                            Are you sure you want to delete {{ name }} ?
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" @click="delete_key">Yes</button>
+                            <button class="btn btn-primary">Yes</button>
                             <button class="btn btn-secondary" @click="close">No</button>
                         </div>
                     </div>
@@ -25,7 +25,7 @@ export default {
       error: ''
     }
   },
-  props: ['key', 'show'],
+  props: ['name', 'show'],
   methods: {
     close () {
       this.$emit('close')
