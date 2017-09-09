@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <create-key @success="key_created" :show.sync="showCreateKey" @close="showCreateKey = false" />
-                <delete-key :show="showDeleteKey" @close="showDeleteKey = false" />
+                <delete-key :show="showDeleteKey" @close="showDeleteKey = false" :name="deleteKeyName" />
                 <div class="col-md-3">
                     <span class="h3 light-h3">SSH Keys</span>
                     <div class="row">
@@ -26,7 +26,7 @@
             <div class="row">
                <div class="col-md-2"></div>
                <div class="col-md-8">
-                    <list-keys :objects="keys" @delete-key="showDeleteKey = true"/>
+                    <list-keys :objects="keys" @show-delete-key="showDeleteKeyPopup" />
                 </div>
             </div>
         </div>
@@ -60,6 +60,7 @@ export default {
   },
   data: function () {
     return {
+      deleteKeyName: '',
       showCreateKey: false,
       showDeleteKey: false
     }
@@ -69,6 +70,9 @@ export default {
       const obj = payload.data.name
       this.$parent.$parent.success(obj, 'Key ', ' imported.')
       this.keys.count += 1
+    },
+    showDeleteKeyPopup: function (payload) {
+      console.log(payload)
     },
     async delete_key () {
       const vm = this

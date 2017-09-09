@@ -11,7 +11,7 @@
                     <span>{{ clef.fingerprint }}</span>
                 </div>
                 <div class="p-1">
-                    <button class="btn btn-block btn-danger" role="button" @click="$emit('delete-key')">
+                    <button class="btn btn-block btn-danger" role="button" @click="$emit('show-delete-key', clef.name)">
                         Delete
                     </button>
                 </div>
