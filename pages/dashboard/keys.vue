@@ -70,6 +70,7 @@ export default {
       const obj = payload.data.name
       this.$parent.$parent.success(obj, 'Key ', ' imported.')
       this.keys.count += 1
+      this.keys.results.push(payload.data)
     },
     showDeleteKeyPopup: function (payload) {
       this.deleteKeyName = payload
