@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <create-key @success="key_created" :show.sync="showCreateKey" @close="showCreateKey = false" />
-                <delete-key :show="showDeleteKey" @close="showDeleteKey = false" :name="deleteKeyName" />
+                <delete-key :show="showDeleteKey" @delete-key="deleteKey" @close="showDeleteKey = false" :name="deleteKeyName" />
                 <div class="col-md-3">
                     <span class="h3 light-h3">SSH Keys</span>
                     <div class="row">
@@ -72,15 +72,15 @@ export default {
       this.keys.count += 1
     },
     showDeleteKeyPopup: function (payload) {
-      console.log(payload)
+      this.deleteKeyName = payload
+      this.showDeleteKey = true
     },
-    async delete_key () {
+    async deleteKey (key) {
       const vm = this
       const token = vm.$store.state.auth_token
+      vm.showDeleteKey = false
       try {
-        const payload = await axios.delete('/keys/', {
-          name: vm.name
-        }, {
+        const payload = await axios.delete('/keys/' + key + '/', {
           headers: {'Authorization': 'JWT ' + token}
         })
         vm.$emit('success', payload)
@@ -88,7 +88,8 @@ export default {
       } catch (exc) {
         const data = exc.response.data
         Object.keys(data).forEach(function (key) {
-          vm.error = data[key][0]
+          const error = data[key][0]
+          vm.$emit('error', error)
         })
       }
     }

@@ -3,13 +3,20 @@
         <transition name="modal">
             <div class="modal-mask">
                 <div class="modal-wrapper">
-                    <div class="modal-container">
+                    <div class="modal-container" style="width: 550px;">
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title"><i class="fa fa-remove text-danger"></i> Are you sure you want to delete SSH key <b>{{ name }}</b> ?</h5>
+                        </div>
                         <div class="modal-body">
-                            Are you sure you want to delete {{ name }} ?
+                            This operation cannot be <b class="text-uppercase">undone</b>.
+                            <br />
+                            You won't be able to use the SSH key <b>{{ name }}</b> again.
+                            <br />
+                            You will have to import it again.
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary">Yes</button>
-                            <button class="btn btn-secondary" @click="close">No</button>
+                            <button class="btn btn-primary" @click="$emit('delete-key', name)">Yes</button>
+                            <button class="btn btn-secondary" @click="$emit('close')">No</button>
                         </div>
                     </div>
                 </div>
@@ -20,17 +27,6 @@
 
 <script>
 export default {
-  data () {
-    return {
-      error: ''
-    }
-  },
-  props: ['name', 'show'],
-  methods: {
-    close () {
-      this.$emit('close')
-      this.error = ''
-    }
-  }
+  props: ['name', 'show']
 }
 </script>
