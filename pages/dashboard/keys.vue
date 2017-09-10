@@ -81,17 +81,20 @@ export default {
       const token = vm.$store.state.auth_token
       vm.showDeleteKey = false
       try {
-        const payload = await axios.delete('/keys/' + key + '/', {
+        await axios.delete('/keys/' + key + '/', {
           headers: {'Authorization': 'JWT ' + token}
         })
-        vm.$emit('success', payload)
-        this.close()
+        this.$parent.$parent.success(key, 'Key ', ' deleted.')
+        for (let result of vm.keys.results) {
+          if (result.name === key) {
+            const index = vm.keys.results.indexOf(result)
+            vm.keys.results.splice(index, 1)
+            break
+          }
+        }
       } catch (exc) {
         const data = exc.response.data
-        Object.keys(data).forEach(function (key) {
-          const error = data[key][0]
-          vm.$emit('error', error)
-        })
+        vm.$parent.$parent.error(key, 'Key ', ' : ' + data.detail)
       }
     }
   }

@@ -35,9 +35,12 @@ export default {
       this.isError = false
       this.isSuccess = true
     },
-    error: function (payload) {
-      this.isError = true
+    error: function (obj, prefix, suffix) {
+      this.notifObj = obj
+      this.notifPrefix = prefix
+      this.notifSuffix = suffix
       this.isSuccess = false
+      this.isError = true
     }
   }
 }
