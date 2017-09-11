@@ -44,6 +44,7 @@ module.exports = {
       { rel: 'stylesheet', href: '/css/main.css'},
       { rel: 'stylesheet', href: '/css/modal.css'},
       { rel: 'stylesheet', href: '/css/navbar.css'},
+      { rel: 'stylesheet', href: '/css/pagination.css'},
       { rel: 'stylesheet', href: '/css/ribbon.css'},
       { rel: 'stylesheet', href: '/css/window.css'}
     ]

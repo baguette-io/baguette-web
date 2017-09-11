@@ -24,9 +24,10 @@
         </div>
         <div class="container">
             <div class="row">
-               <div class="col-md-2"></div>
-               <div class="col-md-8">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                     <list-keys :objects="keys" @show-delete-key="showDeleteKeyPopup" />
+                    <pagination @page-change="listKeys" :limit.sync="limit" :offset.sync="offset" :total.sync="keys.count" />
                 </div>
             </div>
         </div>
@@ -38,6 +39,7 @@ import axios from '~/plugins/axios'
 import CreateKey from '~/components/dashboard/create/key'
 import DeleteKey from '~/components/dashboard/delete/key'
 import ListKeys from '~/components/dashboard/list/keys'
+import Pagination from '~/components/dashboard/pagination'
 
 export default {
   middleware: 'auth',
@@ -45,7 +47,8 @@ export default {
   components: {
     CreateKey,
     DeleteKey,
-    ListKeys
+    ListKeys,
+    Pagination
   },
   async asyncData ({ store, error }) {
     const token = store.state.auth_token
@@ -61,6 +64,8 @@ export default {
   data: function () {
     return {
       deleteKeyName: '',
+      offset: 0,
+      limit: 10,
       showCreateKey: false,
       showDeleteKey: false
     }
@@ -75,6 +80,25 @@ export default {
     showDeleteKeyPopup: function (payload) {
       this.deleteKeyName = payload
       this.showDeleteKey = true
+    },
+    async listKeys (offset, limit) {
+      const vm = this
+      const token = vm.$store.state.auth_token
+      try {
+        const keys = await axios.get('/keys/', {
+          params: {
+            limit: limit,
+            offset: offset
+          },
+          headers: {'Authorization': 'JWT ' + token}
+        })
+        vm.total = keys.data.count
+        vm.keys = keys.data
+        vm.limit = limit
+        vm.offset = offset
+      } catch (exc) {
+        console.log(exc)
+      }
     },
     async deleteKey (key) {
       const vm = this

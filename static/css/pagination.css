@@ -1,0 +1,15 @@
+/*
+ * table of contents:
+ * 1. General
+*/
+
+/* 1. General */
+
+.nav-pagination {
+    margin-top: 20px;
+}
+
+.nav-pagination .page-link:focus, .nav-pagination .page-link:hover {
+  background-color: #FFF;
+  color: #007BFF;
+}
