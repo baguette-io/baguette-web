@@ -7,8 +7,7 @@
             </div>
             <div class="d-flex justify-content-between">
                 <div class="p-1">
-                    <span class="text-muted">Fingerprint:&nbsp;</span>
-                    <span>{{ obj.description }}</span>
+                    <span class="text-muted">{{ obj.description }}</span>
                 </div>
                 <div class="p-1">
                     <button class="btn btn-block btn-danger" role="button" :disabled="!obj.deletable" @click="$emit('show-delete-organization', obj.name)">
