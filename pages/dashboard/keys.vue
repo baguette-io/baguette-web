@@ -116,6 +116,7 @@ export default {
             break
           }
         }
+        vm.keys.count -= 1
       } catch (exc) {
         const data = exc.response.data
         vm.$parent.$parent.error(key, 'Key ', ' : ' + data.detail)
