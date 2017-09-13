@@ -9,7 +9,7 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownOrganization">
                             <nuxt-link class="dropdown-item" v-for="orga in orgas.results" :key="orga.name" v-bind:to="'/dashboard/organizations/' + orga.name">
-                                {{ orga.name }} 
+                                {{ orga.organization.name }} 
                             </nuxt-link>
                             <div class="dropdown-divider"></div>
                             <button class="btn btn-block btn-danger" role="button" v-on:click="showCreateOrganization = true">
@@ -76,7 +76,7 @@ export default {
     const keys = await axios.get('/keys/', {
       headers: {'Authorization': 'JWT ' + token}
     })
-    const orgas = await axios.get('/organizations/', {
+    const orgas = await axios.get('/members/', {
       headers: {'Authorization': 'JWT ' + token}
     })
     quotas = {max_keys: quotas.data['results'][0], max_orgas: quotas.data['results'][1]}

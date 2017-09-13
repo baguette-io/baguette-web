@@ -55,7 +55,7 @@ export default {
     let quotas = await axios.get('/quotas/', {
       headers: {'Authorization': 'JWT ' + token}
     })
-    const orgas = await axios.get('/organizations/', {
+    const orgas = await axios.get('/members/', {
       headers: {'Authorization': 'JWT ' + token}
     })
     quotas = {max_orgas: quotas.data['results'][1]}
@@ -85,7 +85,7 @@ export default {
       const vm = this
       const token = vm.$store.state.auth_token
       try {
-        const organizations = await axios.get('/organizations/', {
+        const organizations = await axios.get('/members/', {
           params: {
             limit: limit,
             offset: offset
