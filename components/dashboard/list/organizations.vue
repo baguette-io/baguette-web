@@ -5,12 +5,24 @@
                 <h5 class="mb-1">{{ obj.organization.name }}</h5>
                 <small class="text-muted">Added on {{ obj.organization.date_created | format_date }}</small>
             </div>
-            <div class="d-flex justify-content-between">
-                <div class="p-1">
+            <div class="row">
+                <div class="col-6">
                     <span class="text-muted">{{ obj.organization.description }}</span>
                 </div>
-                <div class="p-1">
-                    <button class="btn btn-block btn-danger" role="button" :disabled="!obj.organization.deletable" @click="$emit('show-delete-organization', obj.name)">
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <i class="fa fa-user-o"></i>&nbsp;<span class="text-muted">{{ obj.organization.stats.members }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <i class="fa fa-envelope-o"></i>&nbsp;<span class="text-muted">{{ obj.organization.stats.invitations }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-block btn-danger" role="button" v-if="obj.is_owner" :disabled="!obj.organization.deletable" @click="$emit('show-delete-organization', obj.organization.name)">
                         Delete
                     </button>
                 </div>

@@ -72,10 +72,10 @@ export default {
   },
   methods: {
     created: function (payload) {
-      const obj = payload.data.name
-      this.$parent.$parent.success(obj, 'Organization ', ' created.')
+      this.$parent.$parent.success(payload.data.name, 'Organization ', ' created.')
       this.orgas.count += 1
-      this.orgas.results.push(payload.data)
+      const result = {is_owner: true, is_admin: true, organization: payload.data, stats: {members: 1, invitations: 0}}
+      this.orgas.results.push(result)
     },
     showPopup: function (payload) {
       this.deleteName = payload
@@ -110,7 +110,7 @@ export default {
         })
         this.$parent.$parent.success(organization, 'Organization ', ' deleted.')
         for (let result of vm.orgas.results) {
-          if (result.name === organization) {
+          if (result.organization.name === organization) {
             const index = vm.orgas.results.indexOf(result)
             vm.orgas.results.splice(index, 1)
             break
