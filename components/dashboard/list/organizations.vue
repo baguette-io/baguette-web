@@ -2,12 +2,16 @@
     <div class="list-group">
         <div class="list-group-item list-group-item-action flex-column align-items-start" v-for="obj in objects.results">
             <div class="d-flex justify-content-between">
-                <h5 class="mb-1">{{ obj.organization.name }}</h5>
+                <h5 class="mb-1">{{ obj.organization.name }}&nbsp;<small class="text-muted">{{ obj.organization.description }}</small></h5>
                 <small class="text-muted">Added on {{ obj.organization.date_created | format_date }}</small>
             </div>
             <div class="row">
                 <div class="col-6">
-                    <span class="text-muted">{{ obj.organization.description }}</span>
+                    <span class="text-muted">
+                        <template v-if="obj.is_owner">owner</template>
+                        <template v-else-if="obj.is_admin">admin</template>
+                        <template v-else="obj.is_admin">member</template>
+                    </span>
                 </div>
                 <div class="col-4">
                     <div class="row">
