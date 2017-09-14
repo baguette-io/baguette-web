@@ -8,7 +8,7 @@
                             Choose an organization
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownOrganization">
-                            <nuxt-link class="dropdown-item" v-for="orga in orgas.results" :key="orga.name" v-bind:to="'/dashboard/organizations/' + orga.name">
+                            <nuxt-link class="dropdown-item" v-for="orga in orgas.results" :key="orga.name" v-bind:to="'/dashboard/organizations/' + orga.organization.name">
                                 {{ orga.organization.name }} 
                             </nuxt-link>
                             <div class="dropdown-divider"></div>
