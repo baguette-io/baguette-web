@@ -41,12 +41,14 @@
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <small class="text-muted text-uppercase text-weight-light">vpcs</small>
-                    <div class="row">
-                        <div class="col">
-                            <p class="h6">{{ vpcs.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_vpcs.value | int }}</span></p>
+                    <nuxt-link :to="'/dashboard/organizations/' + slug + '/vpcs/'" class="text-no-decoration">
+                        <small class="text-muted text-uppercase text-weight-light">vpcs</small>
+                        <div class="row">
+                            <div class="col">
+                                <p class="h6">{{ vpcs.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_vpcs.value | int }}</span></p>
+                            </div>
                         </div>
-                    </div>
+                    </nuxt-link>
                 </div>
             </div>
         </div>
