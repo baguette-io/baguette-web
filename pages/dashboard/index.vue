@@ -7,11 +7,10 @@
                         <button class="btn dropdown-toggle btn-outline-danger" href="#" role="button" id="dropdownOrganization" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Choose an organization
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownOrganization">
+                        <div class="dropdown-menu" aria-labelledby="dropdownOrganization" style="padding-bottom: 0">
                             <nuxt-link class="dropdown-item" v-for="orga in orgas.results" :key="orga.name" v-bind:to="'/dashboard/organizations/' + orga.organization.name">
                                 {{ orga.organization.name }} 
                             </nuxt-link>
-                            <div class="dropdown-divider"></div>
                             <button class="btn btn-block btn-danger" role="button" v-on:click="showCreateOrganization = true">
                                 Create an organization
                             </button>
