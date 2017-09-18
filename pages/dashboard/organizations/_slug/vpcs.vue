@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="col-md-7"></div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <button class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
                         Create VPC
                     </button>

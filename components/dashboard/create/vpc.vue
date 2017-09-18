@@ -23,14 +23,6 @@
                                     <input type="text" v-model="name" placeholder="Name" required="required" value="" class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-check">
-                                    <label for="form-check-label">
-                                        <input type="checkbox" class="form-check-input" v-model="deletable">
-                                         deletable
-                                    </label>
-                                </div>
-                            </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary" @click="create">Save</button>
@@ -49,7 +41,6 @@ export default {
   props: ['orga', 'show'],
   data () {
     return {
-      deletable: true,
       error: '',
       name: ''
     }
@@ -59,7 +50,6 @@ export default {
       this.$emit('close')
       this.error = ''
       this.name = ''
-      this.deletable = true
     },
     async create () {
       const vm = this
@@ -67,7 +57,6 @@ export default {
       if (vm.name.length > 0) {
         try {
           const payload = await axios.post('/vpcs/' + vm.orga + '/', {
-            deletable: vm.deletable,
             name: vm.name
           }, {
             headers: {'Authorization': 'JWT ' + token}
