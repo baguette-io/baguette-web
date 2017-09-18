@@ -19,7 +19,17 @@
                 </div>
                 <div class="col-md-3"></div>
                 <create-organization @success="organization_created" :show="showCreateOrganization" @close="showCreateOrganization = false" />
-                <div class="col-sm-3">
+                <div class="col-sm-2">
+                    <nuxt-link to="/dashboard/invitations/" class="text-no-decoration">
+                        <small class="text-muted text-uppercase text-weight-light">invitations</small>
+                        <div class="row">
+                            <div class="col">
+                                <p class="h6">{{ invits.count | int }}</p>
+                            </div>
+                        </div>
+                    </nuxt-link>
+                </div>
+                <div class="col-sm-2">
                     <nuxt-link to="/dashboard/organizations/" class="text-no-decoration">
                         <small class="text-muted text-uppercase text-weight-light">organizations</small>
                         <div class="row">
@@ -29,7 +39,7 @@
                         </div>
                     </nuxt-link>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <nuxt-link to="/dashboard/keys/" class="text-no-decoration">
                         <small class="text-muted text-uppercase text-weight-light">keys</small>
                         <div class="row">
@@ -75,11 +85,14 @@ export default {
     const keys = await axios.get('/keys/', {
       headers: {'Authorization': 'JWT ' + token}
     })
+    const invits = await axios.get('/invitations/', {
+      headers: {'Authorization': 'JWT ' + token}
+    })
     const orgas = await axios.get('/members/', {
       headers: {'Authorization': 'JWT ' + token}
     })
     quotas = {max_keys: quotas.data['results'][0], max_orgas: quotas.data['results'][1]}
-    return { quotas: quotas, keys: keys.data, orgas: orgas.data }
+    return { quotas: quotas, keys: keys.data, orgas: orgas.data, invits: invits.data }
   },
   data: function () {
     return {
