@@ -29,6 +29,9 @@
                     <button class="btn btn-block btn-danger" role="button" v-if="obj.is_owner" :disabled="!obj.organization.deletable" @click.prevent="$emit('show-delete-organization', obj.organization.name)">
                         Delete
                     </button>
+                    <button class="btn btn-block btn-danger" role="button" v-if="!obj.is_owner" @click.prevent="$emit('show-leave-organization', obj.organization.name)">
+                        Leave
+                    </button>
                 </div>
             </div>
         </nuxt-link>

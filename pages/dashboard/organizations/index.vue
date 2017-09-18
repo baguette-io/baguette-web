@@ -4,6 +4,7 @@
             <div class="row">
                 <create-organization @success="created" :show.sync="showCreate" @close="showCreate = false" />
                 <delete-organization :show="showDelete" @delete-organization="remove" @close="showDelete = false" :name="deleteName" />
+                <leave-organization :show="showLeave" @leave-organization="leave" @close="showLeave = false" :name="leaveName" />
                 <div class="col-md-3">
                     <span class="h3 light-h3">Organizations</span>
                     <div class="row">
@@ -26,7 +27,7 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <list-organizations :objects="orgas" @show-delete-organization="showPopup" />
+                    <list-organizations :objects="orgas" @show-delete-organization="showPopup" @show-leave-organization="leavePopup" />
                     <pagination @page-change="list" :limit.sync="limit" :offset.sync="offset" :total.sync="orgas.count" />
                 </div>
             </div>
@@ -38,6 +39,7 @@
 import axios from '~/plugins/axios'
 import CreateOrganization from '~/components/dashboard/create/organization'
 import DeleteOrganization from '~/components/dashboard/delete/organization'
+import LeaveOrganization from '~/components/dashboard/leave'
 import ListOrganizations from '~/components/dashboard/list/organizations'
 import Pagination from '~/components/dashboard/pagination'
 
@@ -47,6 +49,7 @@ export default {
   components: {
     CreateOrganization,
     DeleteOrganization,
+    LeaveOrganization,
     ListOrganizations,
     Pagination
   },
@@ -64,10 +67,12 @@ export default {
   data: function () {
     return {
       deleteName: '',
+      leaveName: '',
       offset: 0,
       limit: 10,
       showCreate: false,
-      showDelete: false
+      showDelete: false,
+      showLeave: false
     }
   },
   methods: {
@@ -80,6 +85,10 @@ export default {
     showPopup: function (payload) {
       this.deleteName = payload
       this.showDelete = true
+    },
+    leavePopup: function (payload) {
+      this.leaveName = payload
+      this.showLeave = true
     },
     async list (offset, limit) {
       const vm = this
@@ -122,6 +131,32 @@ export default {
         let detail = 'not found.'
         if (exc.response.status === 403) {
           detail = 'undeletable.'
+        }
+        vm.$parent.$parent.error(organization, 'Organization ', ' : ' + detail)
+      }
+    },
+    async leave (organization) {
+      const vm = this
+      const token = vm.$store.state.auth_token
+      vm.showLeave = false
+      try {
+        await axios.delete('/members/' + organization + '/' + vm.$store.state.username + '/', {
+          headers: {'Authorization': 'JWT ' + token}
+        })
+        this.$parent.$parent.success(organization, 'Organization ', ' leaved.')
+        for (let result of vm.orgas.results) {
+          if (result.organization.name === organization) {
+            const index = vm.orgas.results.indexOf(result)
+            vm.orgas.results.splice(index, 1)
+            break
+          }
+        }
+        vm.orgas.count -= 1
+      } catch (exc) {
+        console.log(exc.response)
+        let detail = 'not found.'
+        if (exc.response.status === 403) {
+          detail = 'unleavable.'
         }
         vm.$parent.$parent.error(organization, 'Organization ', ' : ' + detail)
       }
