@@ -52,16 +52,21 @@
         </div>
         <br />
         <div class="container">
+            <list-events :orga="slug" />
         </div>
     </div>
 </template>
 
 <script>
+import ListEvents from '~/components/dashboard/list/events'
 import axios from '~/plugins/axios'
 
 export default {
   middleware: 'auth',
   layout: 'dashboard',
+  components: {
+    ListEvents
+  },
   async asyncData ({ params, store, error }) {
     const slug = params.slug
     const token = store.state.auth_token

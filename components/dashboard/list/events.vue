@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col">
                         <img src="/images/avatar.svg" class="rounded-circle avatar" alt="avatar" />
-                        <span class="font-weight-bold">baguette.io</span>&nbsp;fail to deploy on&nbsp;<small class="text-muted text-uppercase text-weight-light">staging</small>
+                        <span class="font-weight-bold">{{ orga }}</span>&nbsp;fail to deploy on&nbsp;<small class="text-muted text-uppercase text-weight-light">staging</small>
 
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col">
                         <img src="/images/avatar.svg" class="rounded-circle avatar" alt="avatar" />
-                        <span class="font-weight-bold">David</span>&nbsp;deploy&nbsp;<span class="font-weight-bold">baguette.io</span>&nbsp;on&nbsp;<small class="text-muted text-uppercase text-weight-light">staging</small>
+                        <span class="font-weight-bold">David</span>&nbsp;deploy&nbsp;<span class="font-weight-bold">{{ orga }}</span>&nbsp;on&nbsp;<small class="text-muted text-uppercase text-weight-light">staging</small>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col">
                         <img src="/images/avatar.svg" class="rounded-circle avatar" alt="avatar" />
-                        <span class="font-weight-bold">Charles</span>&nbsp;added David to&nbsp;<span class="font-weight-bold">baguette.io</span>&nbsp;<small class="text-muted text-uppercase text-weight-light">organization</small>
+                        <span class="font-weight-bold">Charles</span>&nbsp;added David to&nbsp;<span class="font-weight-bold">{{ orga }}</span>&nbsp;<small class="text-muted text-uppercase text-weight-light">organization</small>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="col">
                         <img src="/images/avatar.svg" class="rounded-circle avatar" alt="avatar" />
-                        <span class="font-weight-bold">baguette.io</span>&nbsp;success to deploy on&nbsp;<small class="text-muted text-uppercase text-weight-light">master</small>
+                        <span class="font-weight-bold">{{ orga }}</span>&nbsp;success to deploy on&nbsp;<small class="text-muted text-uppercase text-weight-light">master</small>
 
                     </div>
                 </div>
@@ -51,3 +51,9 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+  props: ['orga']
+}
+</script>

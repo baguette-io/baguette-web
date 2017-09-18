@@ -44,7 +44,7 @@
         <div class="container">
             <div class="row">
                <div class="col-md-6">
-                    <list-events />
+                    <list-events :orga="'baguette.io'" />
                 </div>
                <div class="col-md-3">
                 </div>
