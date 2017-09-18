@@ -15,8 +15,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3"></div>
-                <div class="col-sm-3">
+                <div class="col-md-1"></div>
+                <div class="col-sm-2">
+                    <small class="text-muted text-uppercase text-weight-light">members</small>
+                    <div class="row">
+                        <div class="col">
+                            <p class="h6">{{ current.stats.members | int }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <small class="text-muted text-uppercase text-weight-light">invitations</small>
+                    <div class="row">
+                        <div class="col">
+                            <p class="h6">{{ current.stats.invitations | int }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
                     <small class="text-muted text-uppercase text-weight-light">projects</small>
                     <div class="row">
                         <div class="col">
@@ -24,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <small class="text-muted text-uppercase text-weight-light">vpcs</small>
                     <div class="row">
                         <div class="col">
@@ -62,8 +78,11 @@ export default {
     const orgas = await axios.get('/organizations/', {
       headers: {'Authorization': 'JWT ' + token}
     })
+    const current = await axios.get('/organizations/' + slug + '/', {
+      headers: {'Authorization': 'JWT ' + token}
+    })
     quotas = {max_projects: quotas.data['results'][0], max_vpcs: quotas.data['results'][1]}
-    return {slug: slug, quotas: quotas, projects: projects.data, vpcs: vpcs.data, orgas: orgas.data}
+    return {slug: slug, quotas: quotas, projects: projects.data, vpcs: vpcs.data, orgas: orgas.data, current: current.data}
   }
 }
 </script>
