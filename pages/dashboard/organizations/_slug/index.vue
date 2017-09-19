@@ -25,12 +25,14 @@
                     </div>
                 </div>
                 <div class="col-sm-2">
+                  <nuxt-link :to="'/dashboard/organizations/' + slug + '/invitations/'" class="text-no-decoration">
                     <small class="text-muted text-uppercase text-weight-light">invitations</small>
                     <div class="row">
                         <div class="col">
                             <p class="h6">{{ current.stats.invitations | int }}</p>
                         </div>
                     </div>
+                  </nuxt-link>
                 </div>
                 <div class="col-sm-2">
                     <small class="text-muted text-uppercase text-weight-light">projects</small>

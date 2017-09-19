@@ -10,6 +10,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-7"></div>
+                <create @success="created" :orga="slug" :show.sync="showCreate" @close="showCreate = false" />
+                <div class="col-md-2">
+                    <button class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
+                        Invite
+                    </button>
+                </div>
             </div>
             <hr />
         </div>
@@ -17,7 +24,7 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <list :objects="objects" @accept="accept" @reject="reject" />
+                    <list :objects="objects" @reject="reject" />
                     <pagination @page-change="list" :limit.sync="limit" :offset.sync="offset" :total.sync="objects.count" />
                 </div>
             </div>
@@ -27,56 +34,45 @@
 
 <script>
 import axios from '~/plugins/axios'
-import List from '~/components/dashboard/list/invitations'
+import Create from '~/components/dashboard/create/invitation'
+import List from '~/components/dashboard/list/invitations_sent'
 import Pagination from '~/components/dashboard/pagination'
 
 export default {
   middleware: 'auth',
   layout: 'dashboard',
   components: {
+    Create,
     List,
     Pagination
   },
-  async asyncData ({ store, error }) {
+  async asyncData ({ params, store, error }) {
     const token = store.state.auth_token
-    const objects = await axios.get('/invitations/', {
+    const slug = params.slug
+    const objects = await axios.get('/invitations/' + slug + '/', {
       headers: {'Authorization': 'JWT ' + token}
     })
-    return { objects: objects.data }
+    return { objects: objects.data, slug: slug }
   },
   data: function () {
     return {
       offset: 0,
-      limit: 10
+      limit: 10,
+      showCreate: false
     }
   },
   methods: {
-    async accept (obj) {
-      const vm = this
-      const token = vm.$store.state.auth_token
-      try {
-        await axios.put('/invitations/' + obj + '/', {}, {
-          headers: {'Authorization': 'JWT ' + token}
-        })
-        this.$parent.$parent.success(obj, 'Invitation to ', ' accepted.')
-        for (let result of vm.objects.results) {
-          if (result.organization.name === obj) {
-            const index = vm.objects.results.indexOf(result)
-            vm.objects.results.splice(index, 1)
-            break
-          }
-        }
-        vm.objects.count -= 1
-      } catch (exc) {
-        const data = exc.response.data
-        vm.$parent.$parent.error(obj, 'Invitation to ', ' : ' + data.detail)
-      }
+    created: function (payload) {
+      const obj = payload.data.account
+      this.$parent.$parent.success(obj, 'Invitation to ', ' sent.')
+      this.objects.count += 1
+      this.objects.results.unshift(payload.data)
     },
     async list (offset, limit) {
       const vm = this
       const token = vm.$store.state.auth_token
       try {
-        const objects = await axios.get('/invitations/', {
+        const objects = await axios.get('/invitations/' + vm.slug + '/', {
           params: {
             limit: limit,
             offset: offset
@@ -94,14 +90,13 @@ export default {
     async reject (obj) {
       const vm = this
       const token = vm.$store.state.auth_token
-      const username = vm.$store.state.username
       try {
-        await axios.delete('/invitations/' + obj + '/' + username + '/', {
+        await axios.delete('/invitations/' + vm.slug + '/' + obj + '/', {
           headers: {'Authorization': 'JWT ' + token}
         })
-        this.$parent.$parent.success(obj, 'Invitation to ', ' rejected.')
+        this.$parent.$parent.success(obj, 'Invitation to ', ' cancelled.')
         for (let result of vm.objects.results) {
-          if (result.organization.name === obj) {
+          if (result.account === obj) {
             const index = vm.objects.results.indexOf(result)
             vm.objects.results.splice(index, 1)
             break

@@ -1,9 +1,9 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light">
 	    <div class="container">
-            <a class="navbar-brand" href="/">
+            <nuxt-link class="navbar-brand" to="/">
                 baguette.io
-            </a>
+            </nuxt-link>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto"></ul>
                 <ul class="navbar-nav navbar-right">

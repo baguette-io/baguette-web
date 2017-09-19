@@ -1,23 +1,25 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="offset-md-5 col-md-4">
+            <div class="col-md-5"></div>
+            <div class="col-md-4">
                 <h2 class="title">Account created</h2>
             </div>
         </div>
         <div class="row">
-            <div class="offset-md-5 col-md-4">
+            <div class="col-md-5"></div>
+            <div class="col-md-4">
                 <div class="text-center">
                     <b>{{ username }}</b>, we have generated for you a private key:
                 </div>
                 <div class="row">
-                    <a href="" class="btn btn-block btn-secondary text-danger" id="download">Please, save it.</a>
+                    <a href="" class="btn btn-block btn-secondary" id="download">Please, save it.</a>
                 </div>
                 <div class="text-center">
                     <p><small><u>We don't store the private key in our databases.</u></small></p>
                 </div>
                 <div class="row">
-                    <a class="btn btn-block btn-danger" role="button" href="/login">Now, you can Log in</a>
+                    <nuxt-link class="btn btn-block btn-danger" role="button" to="/login">Now, you can Log in</nuxt-link>
                 </div>
             </div>
         </div>

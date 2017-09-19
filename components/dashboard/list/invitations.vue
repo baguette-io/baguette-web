@@ -6,6 +6,7 @@
                 <small class="text-muted">Received on {{ obj.date_created | format_date }}</small>
             </div>
             <div class="d-flex justify-content-between">
+                <div class="p-1">
                     <span class="text-muted">members:&nbsp;</span>
                     <span>{{ obj.organization.stats.members }}</span>
                 </div>
@@ -13,8 +14,6 @@
                     <button class="btn btn-block btn-success" role="button" @click="$emit('accept', obj.organization.name)">
                         Accept
                     </button>
-                </div>
-                <div class="p-1">
                     <button class="btn btn-block btn-danger" role="button" @click="$emit('reject', obj.organization.name)">
                         Reject
                     </button>
