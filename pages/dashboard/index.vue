@@ -11,14 +11,10 @@
                             <nuxt-link class="dropdown-item" v-for="orga in orgas.results" :key="orga.name" v-bind:to="'/dashboard/organizations/' + orga.organization.name">
                                 {{ orga.organization.name }} 
                             </nuxt-link>
-                            <button class="btn btn-block btn-danger" role="button" v-on:click="showCreateOrganization = true">
-                                Create an organization
-                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3"></div>
-                <create-organization @success="organization_created" :show="showCreateOrganization" @close="showCreateOrganization = false" />
                 <div class="col-sm-2">
                     <nuxt-link to="/dashboard/invitations/" class="text-no-decoration">
                         <small class="text-muted text-uppercase text-weight-light">invitations</small>
@@ -94,16 +90,13 @@ export default {
     quotas = {max_keys: quotas.data['results'][0], max_orgas: quotas.data['results'][1]}
     return { quotas: quotas, keys: keys.data, orgas: orgas.data, invits: invits.data }
   },
-  data: function () {
-    return {
-      showCreateOrganization: false
-    }
-  },
   methods: {
     organization_created: function (payload) {
       const obj = payload.data.name
       this.$parent.$parent.success(obj, 'Organization ', ' created.')
       this.orgas.count += 1
+      const result = {is_owner: true, is_admin: true, organization: payload.data, stats: {members: 1, invitations: 0}}
+      this.orgas.results.unshift(result)
     }
   }
 }
