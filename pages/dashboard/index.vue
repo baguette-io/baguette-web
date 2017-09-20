@@ -3,16 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="dropdown shown">
-                        <button class="btn dropdown-toggle btn-outline-danger" href="#" role="button" id="dropdownOrganization" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Choose an organization
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownOrganization" style="padding-bottom: 0">
-                            <nuxt-link class="dropdown-item" v-for="orga in orgas.results" :key="orga.name" v-bind:to="'/dashboard/organizations/' + orga.organization.name">
-                                {{ orga.organization.name }} 
-                            </nuxt-link>
-                        </div>
-                    </div>
+                    <select-organizations :current="''" />
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-sm-2">
@@ -65,13 +56,15 @@
 import axios from '~/plugins/axios'
 import CreateOrganization from '~/components/dashboard/create/organization'
 import ListEvents from '~/components/dashboard/list/events'
+import SelectOrganizations from '~/components/dashboard/list/select_organizations'
 
 export default {
   middleware: 'auth',
   layout: 'dashboard',
   components: {
     CreateOrganization,
-    ListEvents
+    ListEvents,
+    SelectOrganizations
   },
   async asyncData ({ store, error }) {
     const token = store.state.auth_token
@@ -89,15 +82,6 @@ export default {
     })
     quotas = {max_keys: quotas.data['results'][0], max_orgas: quotas.data['results'][1]}
     return { quotas: quotas, keys: keys.data, orgas: orgas.data, invits: invits.data }
-  },
-  methods: {
-    organization_created: function (payload) {
-      const obj = payload.data.name
-      this.$parent.$parent.success(obj, 'Organization ', ' created.')
-      this.orgas.count += 1
-      const result = {is_owner: true, is_admin: true, organization: payload.data, stats: {members: 1, invitations: 0}}
-      this.orgas.results.unshift(result)
-    }
   }
 }
 </script>

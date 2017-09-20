@@ -4,16 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="dropdown shown">
-                        <button class="btn dropdown-toggle btn-outline-danger" href="#" role="button" id="dropdownOrganization" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ slug }}
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownOrganization">
-                            <nuxt-link class="dropdown-item" v-for="orga in orgas.results" :key="orga.name" v-bind:to="'/dashboard/organizations/' + orga.name">
-                                {{ orga.name }} 
-                            </nuxt-link>
-                        </div>
-                    </div>
+                    <select-organizations :current="slug" />
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-sm-2">
@@ -65,13 +56,15 @@
 
 <script>
 import ListEvents from '~/components/dashboard/list/events'
+import SelectOrganizations from '~/components/dashboard/list/select_organizations'
 import axios from '~/plugins/axios'
 
 export default {
   middleware: 'auth',
   layout: 'dashboard',
   components: {
-    ListEvents
+    ListEvents,
+    SelectOrganizations
   },
   async asyncData ({ params, store, error }) {
     const slug = params.slug
@@ -86,14 +79,11 @@ export default {
     const vpcs = await axios.get('/vpcs/' + slug + '/', {
       headers: {'Authorization': 'JWT ' + token}
     })
-    const orgas = await axios.get('/organizations/', {
-      headers: {'Authorization': 'JWT ' + token}
-    })
     const current = await axios.get('/organizations/' + slug + '/', {
       headers: {'Authorization': 'JWT ' + token}
     })
     quotas = {max_projects: quotas.data['results'][0], max_vpcs: quotas.data['results'][1]}
-    return {slug: slug, quotas: quotas, projects: projects.data, vpcs: vpcs.data, orgas: orgas.data, current: current.data}
+    return {slug: slug, quotas: quotas, projects: projects.data, vpcs: vpcs.data, current: current.data}
   }
 }
 </script>
