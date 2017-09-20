@@ -17,12 +17,14 @@
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-sm-2">
+                  <nuxt-link :to="'/dashboard/organizations/' + slug + '/members/'" class="text-no-decoration">
                     <small class="text-muted text-uppercase text-weight-light">members</small>
                     <div class="row">
                         <div class="col">
                             <p class="h6">{{ current.stats.members | int }}</p>
                         </div>
                     </div>
+                  </nuxt-link>
                 </div>
                 <div class="col-sm-2">
                   <nuxt-link :to="'/dashboard/organizations/' + slug + '/invitations/'" class="text-no-decoration">
