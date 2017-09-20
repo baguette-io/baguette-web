@@ -1,34 +1,37 @@
 <template>
-    <div style="min-height:500px;">
-            <hr />
-        <div class="container">
-            <div class="row">
-                <create-key @success="key_created" :show.sync="showCreateKey" @close="showCreateKey = false" />
-                <delete-key :show="showDeleteKey" @delete-key="deleteKey" @close="showDeleteKey = false" :name="deleteKeyName" />
-                <div class="col-md-3">
-                    <select-organizations :current="''" :path="''" />
-                </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-3">
-                    <span class="h3 light-h3">SSH Keys &nbsp;</span>
-                    <span class="text-primary"> {{ keys.count | int }}</span>
-                    <span class="text-muted text-weight-light">/ {{ quotas.max_keys.value | int }}</span>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-2">
-                    <button class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreateKey = true">
-                        Import key
-                    </button>
+    <div>
+        <breadcrumb :items="breadcrumbs" />
+        <div style="min-height:500px;">
+                <hr />
+            <div class="container">
+                <div class="row">
+                    <create-key @success="key_created" :show.sync="showCreateKey" @close="showCreateKey = false" />
+                    <delete-key :show="showDeleteKey" @delete-key="deleteKey" @close="showDeleteKey = false" :name="deleteKeyName" />
+                    <div class="col-md-3">
+                        <select-organizations :current="''" :path="''" />
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <span class="h3 light-h3">SSH Keys &nbsp;</span>
+                        <span class="text-primary"> {{ keys.count | int }}</span>
+                        <span class="text-muted text-weight-light">/ {{ quotas.max_keys.value | int }}</span>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <button class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreateKey = true">
+                            Import key
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br />
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <list-keys :objects="keys" @show-delete-key="showDeleteKeyPopup" />
-                    <pagination @page-change="listKeys" :limit.sync="limit" :offset.sync="offset" :total.sync="keys.count" />
+            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <list-keys :objects="keys" @show-delete-key="showDeleteKeyPopup" />
+                        <pagination @page-change="listKeys" :limit.sync="limit" :offset.sync="offset" :total.sync="keys.count" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,6 +40,7 @@
 
 <script>
 import axios from '~/plugins/axios'
+import Breadcrumb from '~/components/dashboard/breadcrumb'
 import CreateKey from '~/components/dashboard/create/key'
 import DeleteKey from '~/components/dashboard/delete/key'
 import ListKeys from '~/components/dashboard/list/keys'
@@ -47,6 +51,7 @@ export default {
   middleware: 'auth',
   layout: 'dashboard',
   components: {
+    Breadcrumb,
     CreateKey,
     DeleteKey,
     ListKeys,
@@ -62,7 +67,7 @@ export default {
       headers: {'Authorization': 'JWT ' + token}
     })
     quotas = {max_keys: quotas.data['results'][0]}
-    return { quotas: quotas, keys: keys.data }
+    return { quotas: quotas, keys: keys.data, breadcrumbs: [{name: 'home', url: '/dashboard/'}, {name: 'keys', url: '/dashboard/keys'}] }
   },
   data: function () {
     return {

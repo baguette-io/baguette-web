@@ -1,35 +1,38 @@
 <template>
-    <div style="min-height:500px;">
-        <hr />
-        <div class="container">
-            <div class="row">
-                <create-organization @success="created" :show.sync="showCreate" @close="showCreate = false" />
-                <delete-organization :show="showDelete" @delete-organization="remove" @close="showDelete = false" :name="deleteName" />
-                <leave-organization :show="showLeave" @leave-organization="leave" @close="showLeave = false" :name="leaveName" />
-                <div class="col-md-3">
-                    <select-organizations :current="''" :path="''" />
-                </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-3">
-                    <span class="h3 light-h3">Organizations &nbsp;</span>
-                    <span class="text-primary"> {{ orgas.count | int }}</span>
-                    <span class="text-muted text-weight-light">/ {{ quotas.max_orgas.value | int }}</span>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-2">
-                    <button class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
-                        Create organization
-                    </button>
+    <div>
+        <breadcrumb :items="breadcrumbs" />
+        <div style="min-height:500px;">
+            <hr />
+            <div class="container">
+                <div class="row">
+                    <create-organization @success="created" :show.sync="showCreate" @close="showCreate = false" />
+                    <delete-organization :show="showDelete" @delete-organization="remove" @close="showDelete = false" :name="deleteName" />
+                    <leave-organization :show="showLeave" @leave-organization="leave" @close="showLeave = false" :name="leaveName" />
+                    <div class="col-md-3">
+                        <select-organizations :current="''" :path="''" />
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <span class="h3 light-h3">Organizations &nbsp;</span>
+                        <span class="text-primary"> {{ orgas.count | int }}</span>
+                        <span class="text-muted text-weight-light">/ {{ quotas.max_orgas.value | int }}</span>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <button class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
+                            Create organization
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br />
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <list-organizations :objects="orgas" @show-delete-organization="showPopup" @show-leave-organization="leavePopup" />
-                    <pagination @page-change="list" :limit.sync="limit" :offset.sync="offset" :total.sync="orgas.count" />
+            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <list-organizations :objects="orgas" @show-delete-organization="showPopup" @show-leave-organization="leavePopup" />
+                        <pagination @page-change="list" :limit.sync="limit" :offset.sync="offset" :total.sync="orgas.count" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,6 +41,7 @@
 
 <script>
 import axios from '~/plugins/axios'
+import Breadcrumb from '~/components/dashboard/breadcrumb'
 import CreateOrganization from '~/components/dashboard/create/organization'
 import DeleteOrganization from '~/components/dashboard/delete/organization'
 import LeaveOrganization from '~/components/dashboard/leave'
@@ -49,6 +53,7 @@ export default {
   middleware: 'auth',
   layout: 'dashboard',
   components: {
+    Breadcrumb,
     CreateOrganization,
     DeleteOrganization,
     LeaveOrganization,
@@ -65,7 +70,7 @@ export default {
       headers: {'Authorization': 'JWT ' + token}
     })
     quotas = {max_orgas: quotas.data['results'][1]}
-    return { quotas: quotas, orgas: orgas.data }
+    return { quotas: quotas, orgas: orgas.data, breadcrumbs: [{name: 'home', url: '/dashboard/'}, {name: 'organizations', url: '/dashboard/organizations/'}] }
   },
   data: function () {
     return {

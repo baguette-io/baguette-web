@@ -1,25 +1,28 @@
 <template>
-    <div style="min-height:500px;">
-        <hr />
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <select-organizations :current="slug" :path="'members'" />
-                </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-3">
-                    <span class="h3 light-h3">Members &nbsp;</span>
-                    <span class="text-primary"> {{ objects.count | int }}</span>
+    <div>
+        <breadcrumb :items="breadcrumbs" />
+        <div style="min-height:500px;">
+            <hr />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <select-organizations :current="slug" :path="'members'" />
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <span class="h3 light-h3">Members &nbsp;</span>
+                        <span class="text-primary"> {{ objects.count | int }}</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br />
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <list :objects="objects" @promote="promote" @demote="demote" @remove="remove" :account="account" :admin="permissions.is_admin" :owner="permissions.is_owner" />
-                    <pagination @page-change="list" :limit.sync="limit" :offset.sync="offset" :total.sync="objects.count" />
+            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <list :objects="objects" @promote="promote" @demote="demote" @remove="remove" :account="account" :admin="permissions.is_admin" :owner="permissions.is_owner" />
+                        <pagination @page-change="list" :limit.sync="limit" :offset.sync="offset" :total.sync="objects.count" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,6 +31,7 @@
 
 <script>
 import axios from '~/plugins/axios'
+import Breadcrumb from '~/components/dashboard/breadcrumb'
 import List from '~/components/dashboard/list/members'
 import Pagination from '~/components/dashboard/pagination'
 import SelectOrganizations from '~/components/dashboard/select/organizations'
@@ -36,6 +40,7 @@ export default {
   middleware: 'auth',
   layout: 'dashboard',
   components: {
+    Breadcrumb,
     List,
     Pagination,
     SelectOrganizations
@@ -55,7 +60,8 @@ export default {
       headers: {'Authorization': 'JWT ' + token}
     })
     permissions = permissions.data['results'][0]
-    return { account: username, objects: objects.data, slug: slug, permissions: permissions }
+    const breadcrumbs = [{name: 'home', url: '/dashboard/'}, {name: slug, url: '/dashboard/organizations/' + slug}, {name: 'members', url: '/dashboard/organizations/' + slug + '/members'}]
+    return { account: username, objects: objects.data, slug: slug, permissions: permissions, breadcrumbs: breadcrumbs }
   },
   data: function () {
     return {

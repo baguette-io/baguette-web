@@ -1,60 +1,64 @@
 <template>
-    <div style="min-height:500px;">
-        <hr />
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <select-organizations :current="slug" :path="''" />
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-sm-2">
-                  <nuxt-link :to="'/dashboard/organizations/' + slug + '/members/'" class="text-no-decoration">
-                    <small class="text-muted text-uppercase text-weight-light">members</small>
-                    <div class="row">
-                        <div class="col">
-                            <p class="h6">{{ current.stats.members | int }}</p>
-                        </div>
+    <div>
+        <breadcrumb :items="breadcrumbs" />
+        <div style="min-height:500px;">
+            <hr />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <select-organizations :current="slug" :path="''" />
                     </div>
-                  </nuxt-link>
-                </div>
-                <div class="col-sm-2">
-                  <nuxt-link :to="'/dashboard/organizations/' + slug + '/invitations/'" class="text-no-decoration">
-                    <small class="text-muted text-uppercase text-weight-light">invitations</small>
-                    <div class="row">
-                        <div class="col">
-                            <p class="h6">{{ current.stats.invitations | int }}</p>
-                        </div>
-                    </div>
-                  </nuxt-link>
-                </div>
-                <div class="col-sm-2">
-                    <small class="text-muted text-uppercase text-weight-light">projects</small>
-                    <div class="row">
-                        <div class="col">
-                            <p class="h6">{{ projects.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_projects.value | int }}</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <nuxt-link :to="'/dashboard/organizations/' + slug + '/vpcs/'" class="text-no-decoration">
-                        <small class="text-muted text-uppercase text-weight-light">vpcs</small>
+                    <div class="col-md-1"></div>
+                    <div class="col-sm-2">
+                      <nuxt-link :to="'/dashboard/organizations/' + slug + '/members/'" class="text-no-decoration">
+                        <small class="text-muted text-uppercase text-weight-light">members</small>
                         <div class="row">
                             <div class="col">
-                                <p class="h6">{{ vpcs.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_vpcs.value | int }}</span></p>
+                                <p class="h6">{{ current.stats.members | int }}</p>
                             </div>
                         </div>
-                    </nuxt-link>
+                      </nuxt-link>
+                    </div>
+                    <div class="col-sm-2">
+                      <nuxt-link :to="'/dashboard/organizations/' + slug + '/invitations/'" class="text-no-decoration">
+                        <small class="text-muted text-uppercase text-weight-light">invitations</small>
+                        <div class="row">
+                            <div class="col">
+                                <p class="h6">{{ current.stats.invitations | int }}</p>
+                            </div>
+                        </div>
+                      </nuxt-link>
+                    </div>
+                    <div class="col-sm-2">
+                        <small class="text-muted text-uppercase text-weight-light">projects</small>
+                        <div class="row">
+                            <div class="col">
+                                <p class="h6">{{ projects.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_projects.value | int }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <nuxt-link :to="'/dashboard/organizations/' + slug + '/vpcs/'" class="text-no-decoration">
+                            <small class="text-muted text-uppercase text-weight-light">vpcs</small>
+                            <div class="row">
+                                <div class="col">
+                                    <p class="h6">{{ vpcs.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_vpcs.value | int }}</span></p>
+                                </div>
+                            </div>
+                        </nuxt-link>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br />
-        <div class="container">
-            <list-events :orga="slug" />
+            <br />
+            <div class="container">
+                <list-events :orga="slug" />
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import Breadcrumb from '~/components/dashboard/breadcrumb'
 import ListEvents from '~/components/dashboard/list/events'
 import SelectOrganizations from '~/components/dashboard/select/organizations'
 import axios from '~/plugins/axios'
@@ -63,6 +67,7 @@ export default {
   middleware: 'auth',
   layout: 'dashboard',
   components: {
+    Breadcrumb,
     ListEvents,
     SelectOrganizations
   },
@@ -83,7 +88,8 @@ export default {
       headers: {'Authorization': 'JWT ' + token}
     })
     quotas = {max_projects: quotas.data['results'][0], max_vpcs: quotas.data['results'][1]}
-    return {slug: slug, quotas: quotas, projects: projects.data, vpcs: vpcs.data, current: current.data}
+    const breadcrumbs = [{name: 'home', url: '/dashboard/'}, {name: slug, url: '/dashboard/organizations/' + slug}]
+    return {slug: slug, quotas: quotas, projects: projects.data, vpcs: vpcs.data, current: current.data, breadcrumbs: breadcrumbs}
   }
 }
 </script>

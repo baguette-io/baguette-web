@@ -1,25 +1,28 @@
 <template>
-    <div style="min-height:500px;">
-        <hr />
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <select-organizations :current="''" :path="'invitations'" />
-                </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-3">
-                    <span class="h3 light-h3">Invitations &nbsp;</span>
-                    <span class="text-primary"> {{ objects.count | int }}</span>
+    <div>
+        <breadcrumb :items="breadcrumbs" />
+        <div style="min-height:500px;">
+            <hr />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <select-organizations :current="''" :path="'invitations'" />
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <span class="h3 light-h3">Invitations &nbsp;</span>
+                        <span class="text-primary"> {{ objects.count | int }}</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br />
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <list :objects="objects" @accept="accept" @reject="reject" />
-                    <pagination @page-change="list" :limit.sync="limit" :offset.sync="offset" :total.sync="objects.count" />
+            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <list :objects="objects" @accept="accept" @reject="reject" />
+                        <pagination @page-change="list" :limit.sync="limit" :offset.sync="offset" :total.sync="objects.count" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,6 +31,7 @@
 
 <script>
 import axios from '~/plugins/axios'
+import Breadcrumb from '~/components/dashboard/breadcrumb'
 import List from '~/components/dashboard/list/invitations'
 import Pagination from '~/components/dashboard/pagination'
 import SelectOrganizations from '~/components/dashboard/select/organizations'
@@ -36,6 +40,7 @@ export default {
   middleware: 'auth',
   layout: 'dashboard',
   components: {
+    Breadcrumb,
     List,
     Pagination,
     SelectOrganizations
@@ -45,7 +50,7 @@ export default {
     const objects = await axios.get('/invitations/', {
       headers: {'Authorization': 'JWT ' + token}
     })
-    return { objects: objects.data }
+    return { objects: objects.data, breadcrumbs: [{name: 'home', url: '/dashboard/'}, {name: 'invitations', url: '/dashboard/invitations'}] }
   },
   data: function () {
     return {
