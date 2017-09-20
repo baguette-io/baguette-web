@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <select-organizations :current="slug" />
+                    <select-organizations :current="slug" :path="''" />
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-sm-2">
@@ -56,7 +56,7 @@
 
 <script>
 import ListEvents from '~/components/dashboard/list/events'
-import SelectOrganizations from '~/components/dashboard/list/select_organizations'
+import SelectOrganizations from '~/components/dashboard/select/organizations'
 import axios from '~/plugins/axios'
 
 export default {

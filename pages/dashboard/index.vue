@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <select-organizations :current="''" />
+                    <select-organizations :current="''" :path="''" />
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-sm-2">
@@ -56,7 +56,7 @@
 import axios from '~/plugins/axios'
 import CreateOrganization from '~/components/dashboard/create/organization'
 import ListEvents from '~/components/dashboard/list/events'
-import SelectOrganizations from '~/components/dashboard/list/select_organizations'
+import SelectOrganizations from '~/components/dashboard/select/organizations'
 
 export default {
   middleware: 'auth',
