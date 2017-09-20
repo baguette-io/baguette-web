@@ -13,7 +13,7 @@
                 <div class="col-md-7"></div>
                 <create @success="created" :orga="slug" :show.sync="showCreate" @close="showCreate = false" />
                 <div class="col-md-2">
-                    <button class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
+                    <button v-if="permissions.is_admin" class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
                         Invite
                     </button>
                 </div>
@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <list :objects="objects" @reject="reject" />
+                    <list :objects="objects" @reject="reject" :admin="permissions.is_admin" />
                     <pagination @page-change="list" :limit.sync="limit" :offset.sync="offset" :total.sync="objects.count" />
                 </div>
             </div>
@@ -49,10 +49,19 @@ export default {
   async asyncData ({ params, store, error }) {
     const token = store.state.auth_token
     const slug = params.slug
+    const username = store.state.username
     const objects = await axios.get('/invitations/' + slug + '/', {
       headers: {'Authorization': 'JWT ' + token}
     })
-    return { objects: objects.data, slug: slug }
+    let permissions = await axios.get('/members/', {
+      params: {
+        account: username,
+        organization: slug
+      },
+      headers: {'Authorization': 'JWT ' + token}
+    })
+    permissions = permissions.data['results'][0]
+    return { objects: objects.data, slug: slug, permissions: permissions }
   },
   data: function () {
     return {

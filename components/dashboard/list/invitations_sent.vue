@@ -8,7 +8,7 @@
             <div class="d-flex justify-content-between">
                 <div class="p-1">
                 </div>
-                <div class="p-1">
+                <div class="p-1" v-if="admin">
                     <button class="btn btn-block btn-danger" role="button" @click="$emit('reject', obj.account)">
                         Cancel
                     </button>
@@ -20,6 +20,6 @@
 
 <script>
 export default {
-  props: ['objects']
+  props: ['admin', 'objects']
 }
 </script>
