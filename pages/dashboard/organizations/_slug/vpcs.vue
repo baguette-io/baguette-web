@@ -1,27 +1,28 @@
 <template>
     <div style="min-height:500px;">
+        <hr />
         <div class="container">
             <div class="row">
                 <create @success="created" :orga="slug" :show.sync="showCreate" @close="showCreate = false" />
                 <delete :show="showDelete" @delete="remove" @close="showDelete = false" :name="deleteName" />
                 <div class="col-md-3">
-                    <span class="h3 light-h3">VPCs</span>
-                    <div class="row">
-                        <div class="col">
-                            <span class="text-primary">{{ objects.count | int }}</span>
-                            <span class="text-muted text-weight-light">/ {{ quotas.max.value | int }}</span>
-                        </div>
-                    </div>
+                    <select-organizations :current="slug" :path="'vpcs'" />
                 </div>
-                <div class="col-md-7"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <span class="h3 light-h3">VPCs &nbsp;</span>
+                    <span class="text-primary"> {{ objects.count | int }}</span>
+                    <span class="text-muted text-weight-light">/ {{ quotas.max.value | int }}</span>
+                </div>
+                <div class="col-md-2"></div>
                 <div class="col-md-2">
                     <button v-if="permissions.is_admin" class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
                         Create VPC
                     </button>
                 </div>
             </div>
-            <hr />
         </div>
+        <br />
         <div class="container">
             <div class="row">
                 <div class="col-md-2"></div>
@@ -40,6 +41,7 @@ import Create from '~/components/dashboard/create/vpc'
 import Delete from '~/components/dashboard/delete/vpc'
 import List from '~/components/dashboard/list/vpcs'
 import Pagination from '~/components/dashboard/pagination'
+import SelectOrganizations from '~/components/dashboard/select/organizations'
 
 export default {
   middleware: 'auth',
@@ -48,7 +50,8 @@ export default {
     Create,
     Delete,
     List,
-    Pagination
+    Pagination,
+    SelectOrganizations
   },
   async asyncData ({ params, store, error }) {
     const token = store.state.auth_token

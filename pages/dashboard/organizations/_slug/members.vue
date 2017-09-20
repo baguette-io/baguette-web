@@ -1,18 +1,19 @@
 <template>
     <div style="min-height:500px;">
+        <hr />
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <span class="h3 light-h3">Members</span>
-                    <div class="row">
-                        <div class="col">
-                            <span class="text-primary">{{ objects.count | int }}</span>
-                        </div>
-                    </div>
+                    <select-organizations :current="slug" :path="'members'" />
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <span class="h3 light-h3">Members &nbsp;</span>
+                    <span class="text-primary"> {{ objects.count | int }}</span>
                 </div>
             </div>
-            <hr />
         </div>
+        <br />
         <div class="container">
             <div class="row">
                 <div class="col-md-2"></div>
@@ -29,13 +30,15 @@
 import axios from '~/plugins/axios'
 import List from '~/components/dashboard/list/members'
 import Pagination from '~/components/dashboard/pagination'
+import SelectOrganizations from '~/components/dashboard/select/organizations'
 
 export default {
   middleware: 'auth',
   layout: 'dashboard',
   components: {
     List,
-    Pagination
+    Pagination,
+    SelectOrganizations
   },
   async asyncData ({ params, store, error }) {
     const token = store.state.auth_token
