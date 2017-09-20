@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-md-2"></div>
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
+                        <button v-if="permissions.is_admin" class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
                             Create a project
                         </button>
                     </div>
