@@ -30,12 +30,14 @@
                       </nuxt-link>
                     </div>
                     <div class="col-sm-2">
+                      <nuxt-link :to="'/dashboard/organizations/' + slug + '/projects/'" class="text-no-decoration">
                         <small class="text-muted text-uppercase text-weight-light">projects</small>
                         <div class="row">
                             <div class="col">
                                 <p class="h6">{{ projects.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_projects.value | int }}</span></p>
                             </div>
                         </div>
+                      </nuxt-link>
                     </div>
                     <div class="col-sm-2">
                         <nuxt-link :to="'/dashboard/organizations/' + slug + '/vpcs/'" class="text-no-decoration">
