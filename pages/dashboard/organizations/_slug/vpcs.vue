@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-7"></div>
                 <div class="col-md-2">
-                    <button class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
+                    <button v-if="permissions.is_admin" class="btn btn-block btn-outline-danger" role="button" v-on:click="showCreate = true">
                         Create VPC
                     </button>
                 </div>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <list :objects="objects" @show-delete="showDeletePopup" />
+                    <list :objects="objects" @show-delete="showDeletePopup" :admin="permissions.is_admin" />
                     <pagination @page-change="list" :limit.sync="limit" :offset.sync="offset" :total.sync="objects.count" />
                 </div>
             </div>
@@ -53,6 +53,7 @@ export default {
   async asyncData ({ params, store, error }) {
     const token = store.state.auth_token
     const slug = params.slug
+    const username = store.state.username
     let quotas = await axios.get('/quotas/', {
       params: {'organization': slug},
       headers: {'Authorization': 'JWT ' + token}
@@ -60,8 +61,16 @@ export default {
     const objects = await axios.get('/vpcs/' + slug + '/', {
       headers: {'Authorization': 'JWT ' + token}
     })
+    let permissions = await axios.get('/members/', {
+      params: {
+        account: username,
+        organization: slug
+      },
+      headers: {'Authorization': 'JWT ' + token}
+    })
+    permissions = permissions.data['results'][0]
     quotas = {max: quotas.data['results'][0]}
-    return { quotas: quotas, objects: objects.data, slug: slug }
+    return { quotas: quotas, objects: objects.data, permissions: permissions, slug: slug }
   },
   data: function () {
     return {

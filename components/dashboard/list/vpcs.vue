@@ -10,7 +10,7 @@
                     <span class="text-muted">deletable:&nbsp;</span>
                     <span>{{ obj.deletable }}</span>
                 </div>
-                <div class="p-1">
+                <div class="p-1" v-if="admin">
                     <button class="btn btn-block btn-danger" :disabled="!obj.deletable" role="button" @click="$emit('show-delete', obj.name)">
                         Delete
                     </button>
@@ -22,6 +22,6 @@
 
 <script>
 export default {
-  props: ['objects']
+  props: ['admin', 'objects']
 }
 </script>
