@@ -11,12 +11,14 @@
                     <span>{{ obj.organization.stats.members }}</span>
                 </div>
                 <div class="p-1">
-                    <button class="btn btn-block btn-success" role="button" @click="$emit('accept', obj.organization.name)">
-                        Accept
-                    </button>
-                    <button class="btn btn-block btn-danger" role="button" @click="$emit('reject', obj.organization.name)">
-                        Reject
-                    </button>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary" role="button" @click="$emit('accept', obj.organization.name)">
+                            Accept
+                        </button>
+                        <button class="btn btn-danger" role="button" @click="$emit('reject', obj.organization.name)">
+                            Reject
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
