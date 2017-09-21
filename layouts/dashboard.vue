@@ -40,27 +40,32 @@ export default {
   },
   methods: {
     success: function (obj, prefix, suffix) {
+      const vm = this
       this.notifObj = obj
       this.notifPrefix = prefix
       this.notifSuffix = suffix
       this.isError = false
       this.isSuccess = true
       this.show = true
+      setTimeout(function () {
+        vm.show = false
+      }, 3000)
     },
     error: function (obj, prefix, suffix) {
+      const vm = this
       this.notifObj = obj
       this.notifPrefix = prefix
       this.notifSuffix = suffix
       this.isSuccess = false
       this.isError = true
       this.show = true
+      setTimeout(function () {
+        vm.show = false
+      }, 3000)
     },
     hide: function () {
       this.show = false
     }
-  },
-  mounted: function () {
-    console.log('mounted')
   }
 }
 </script>
