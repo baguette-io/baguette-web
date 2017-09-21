@@ -112,7 +112,7 @@ export default {
         await axios.delete('/keys/' + key + '/', {
           headers: {'Authorization': 'JWT ' + token}
         })
-        this.$parent.$parent.success(key, 'Key ', ' deleted.')
+        this.$parent.$parent.error(key, 'Key ', ' deleted.')
         for (let result of vm.keys.results) {
           if (result.name === key) {
             const index = vm.keys.results.indexOf(result)

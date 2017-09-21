@@ -121,7 +121,7 @@ export default {
         await axios.delete('/organizations/' + organization + '/', {
           headers: {'Authorization': 'JWT ' + token}
         })
-        this.$parent.$parent.success(organization, 'Organization ', ' deleted.')
+        this.$parent.$parent.error(organization, 'Organization ', ' deleted.')
         for (let result of vm.orgas.results) {
           if (result.organization.name === organization) {
             const index = vm.orgas.results.indexOf(result)
@@ -147,7 +147,7 @@ export default {
         await axios.delete('/members/' + organization + '/' + vm.$store.state.username + '/', {
           headers: {'Authorization': 'JWT ' + token}
         })
-        this.$parent.$parent.success(organization, 'Organization ', ' leaved.')
+        this.$parent.$parent.error(organization, 'Organization ', ' leaved.')
         for (let result of vm.orgas.results) {
           if (result.organization.name === organization) {
             const index = vm.orgas.results.indexOf(result)

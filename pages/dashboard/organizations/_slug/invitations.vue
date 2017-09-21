@@ -108,7 +108,7 @@ export default {
         await axios.delete('/invitations/' + vm.slug + '/' + obj + '/', {
           headers: {'Authorization': 'JWT ' + token}
         })
-        this.$parent.$parent.success(obj, 'Invitation to ', ' cancelled.')
+        this.$parent.$parent.error(obj, 'Invitation to ', ' cancelled.')
         for (let result of vm.objects.results) {
           if (result.account === obj) {
             const index = vm.objects.results.indexOf(result)

@@ -119,7 +119,7 @@ export default {
         }, {
           headers: {'Authorization': 'JWT ' + token}
         })
-        this.$parent.$parent.success(username, 'Member ', ' demoted.')
+        this.$parent.$parent.error(username, 'Member ', ' demoted.')
         for (let result of vm.objects.results) {
           if (result.account === username) {
             const index = vm.objects.results.indexOf(result)
@@ -139,7 +139,7 @@ export default {
         await axios.delete('/members/' + vm.slug + '/' + username + '/', {
           headers: {'Authorization': 'JWT ' + token}
         })
-        this.$parent.$parent.success(username, 'Member ', ' removed.')
+        this.$parent.$parent.error(username, 'Member ', ' removed.')
         for (let result of vm.objects.results) {
           if (result.account === username) {
             const index = vm.objects.results.indexOf(result)

@@ -124,7 +124,7 @@ export default {
         await axios.delete('/vpcs/' + vm.slug + '/' + obj + '/', {
           headers: {'Authorization': 'JWT ' + token}
         })
-        this.$parent.$parent.success(obj, 'Vpc ', ' deleted.')
+        this.$parent.$parent.error(obj, 'Vpc ', ' deleted.')
         for (let result of vm.objects.results) {
           if (result.name === obj) {
             const index = vm.objects.results.indexOf(result)
