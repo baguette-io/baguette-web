@@ -4,7 +4,7 @@
 	    <div class="container">
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto">
-                    <dashboard-notif :prefix.sync="notifPrefix" :suffix.sync="notifSuffix" :isSuccess.sync="isSuccess" :isError.sync="isError" :obj.sync="notifObj" />
+                    <dashboard-notif :show.sync="show" :prefix.sync="notifPrefix" :suffix.sync="notifSuffix" :isSuccess.sync="isSuccess" :isError.sync="isError" :obj.sync="notifObj" @hide="hide" />
                 </ul>
                 <ul class="navbar-nav navbar-right">
                     <li class="">
@@ -28,6 +28,7 @@ export default {
     return {
       isSuccess: false,
       isError: false,
+      show: false,
       notifObj: '',
       notifPrefix: '',
       notifSuffix: ''
@@ -44,6 +45,7 @@ export default {
       this.notifSuffix = suffix
       this.isError = false
       this.isSuccess = true
+      this.show = true
     },
     error: function (obj, prefix, suffix) {
       this.notifObj = obj
@@ -51,7 +53,14 @@ export default {
       this.notifSuffix = suffix
       this.isSuccess = false
       this.isError = true
+      this.show = true
+    },
+    hide: function () {
+      this.show = false
     }
+  },
+  mounted: function () {
+    console.log('mounted')
   }
 }
 </script>
