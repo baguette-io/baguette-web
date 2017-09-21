@@ -1,14 +1,25 @@
 <template>
   <div class="dashboard">
-    <dashboard-navbar />
-    <dashboard-notif :prefix.sync="notifPrefix" :suffix.sync="notifSuffix" :isSuccess.sync="isSuccess" :isError.sync="isError" :obj.sync="notifObj" />
+    <nav class="navbar navbar-expand-lg navbar-light">
+	    <div class="container">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mx-auto">
+                    <dashboard-notif :prefix.sync="notifPrefix" :suffix.sync="notifSuffix" :isSuccess.sync="isSuccess" :isError.sync="isError" :obj.sync="notifObj" />
+                </ul>
+                <ul class="navbar-nav navbar-right">
+                    <li class="">
+                        <a class="btn btn-danger" href="/logout" role="button">Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <nuxt/>
     <default-footer />
   </div>
 </template>
 
 <script>
-import DashboardNavbar from '~/components/dashboard/navbar'
 import DashboardNotif from '~/components/dashboard/notif'
 import DefaultFooter from '~/components/footer'
 export default {
@@ -23,7 +34,6 @@ export default {
     }
   },
   components: {
-    DashboardNavbar,
     DashboardNotif,
     DefaultFooter
   },
