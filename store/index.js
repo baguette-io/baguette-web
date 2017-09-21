@@ -1,4 +1,5 @@
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 const store = () => new Vuex.Store({
   state: {
@@ -26,7 +27,8 @@ const store = () => new Vuex.Store({
       state.username = null
       state.auth_token = null
     }
-  }
+  },
+  plugins: [createPersistedState()]
 })
 
 export default store

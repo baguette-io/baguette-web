@@ -8,6 +8,7 @@ module.exports = {
   /*
   ** Envs
   */
+  mode: 'spa',
   env: {
     endpoint: process.env.ENDPOINT
   },
