@@ -1,16 +1,14 @@
 <template>
     <div>
-        <breadcrumb :items="breadcrumbs" />
         <div style="min-height:500px;">
-                <hr />
             <div class="container">
                 <div class="row">
                     <create-key @success="key_created" :show.sync="showCreateKey" @close="showCreateKey = false" />
                     <delete-key :show="showDeleteKey" @delete-key="deleteKey" @close="showDeleteKey = false" :name="deleteKeyName" />
-                    <div class="col-md-3">
-                        <select-organizations :current="''" :path="''" />
+                    <div class="col-md-4">
+                        <breadcrumb :items="breadcrumbs" />
                     </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-1"></div>
                     <div class="col-md-3">
                         <span class="h3 light-h3">SSH Keys &nbsp;</span>
                         <span class="text-primary"> {{ keys.count | int }}</span>
@@ -45,7 +43,6 @@ import CreateKey from '~/components/dashboard/create/key'
 import DeleteKey from '~/components/dashboard/delete/key'
 import ListKeys from '~/components/dashboard/list/keys'
 import Pagination from '~/components/dashboard/pagination'
-import SelectOrganizations from '~/components/dashboard/select/organizations'
 
 export default {
   middleware: 'auth',
@@ -55,8 +52,7 @@ export default {
     CreateKey,
     DeleteKey,
     ListKeys,
-    Pagination,
-    SelectOrganizations
+    Pagination
   },
   async asyncData ({ store, error }) {
     const token = store.state.auth_token
