@@ -1,14 +1,11 @@
 <template>
     <div>
-        <breadcrumb :items="breadcrumbs" />
         <div style="min-height:500px;">
-            <hr />
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
-                        <select-organizations :current="slug" :path="''" />
+                    <div class="col-md-4">
+                        <breadcrumb :items="breadcrumbs" />
                     </div>
-                    <div class="col-md-1"></div>
                     <div class="col-sm-2">
                       <nuxt-link :to="'/dashboard/organizations/' + slug + '/members/'" class="text-no-decoration">
                         <small class="text-muted text-uppercase text-weight-light">members</small>
@@ -62,7 +59,6 @@
 <script>
 import Breadcrumb from '~/components/dashboard/breadcrumb'
 import ListEvents from '~/components/dashboard/list/events'
-import SelectOrganizations from '~/components/dashboard/select/organizations'
 import axios from '~/plugins/axios'
 
 export default {
@@ -70,8 +66,7 @@ export default {
   layout: 'dashboard',
   components: {
     Breadcrumb,
-    ListEvents,
-    SelectOrganizations
+    ListEvents
   },
   async asyncData ({ params, store, error }) {
     const slug = params.slug

@@ -1,14 +1,12 @@
 <template>
     <div>
-        <breadcrumb :items="breadcrumbs" />
         <div style="min-height:500px;">
-            <hr />
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
-                        <select-organizations :current="slug" :path="'members'" />
+                    <div class="col-md-4">
+                        <breadcrumb :items="breadcrumbs" />
                     </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-1"></div>
                     <div class="col-md-3">
                         <span class="h3 light-h3">Members &nbsp;</span>
                         <span class="text-primary"> {{ objects.count | int }}</span>
@@ -34,7 +32,6 @@ import axios from '~/plugins/axios'
 import Breadcrumb from '~/components/dashboard/breadcrumb'
 import List from '~/components/dashboard/list/members'
 import Pagination from '~/components/dashboard/pagination'
-import SelectOrganizations from '~/components/dashboard/select/organizations'
 
 export default {
   middleware: 'auth',
@@ -42,8 +39,7 @@ export default {
   components: {
     Breadcrumb,
     List,
-    Pagination,
-    SelectOrganizations
+    Pagination
   },
   async asyncData ({ params, store, error }) {
     const token = store.state.auth_token

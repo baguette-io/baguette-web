@@ -1,17 +1,15 @@
 <template>
     <div>
-        <breadcrumb :items="breadcrumbs" />
         <div style="min-height:500px;">
-            <hr />
             <div class="container">
                 <div class="row">
                     <create-organization @success="created" :show.sync="showCreate" @close="showCreate = false" />
                     <delete-organization :show="showDelete" @delete-organization="remove" @close="showDelete = false" :name="deleteName" />
                     <leave-organization :show="showLeave" @leave-organization="leave" @close="showLeave = false" :name="leaveName" />
-                    <div class="col-md-3">
-                        <select-organizations :current="''" :path="''" />
+                    <div class="col-md-4">
+                        <breadcrumb :items="breadcrumbs" />
                     </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-1"></div>
                     <div class="col-md-3">
                         <span class="h3 light-h3">Organizations &nbsp;</span>
                         <span class="text-primary"> {{ orgas.count | int }}</span>
@@ -47,7 +45,6 @@ import DeleteOrganization from '~/components/dashboard/delete/organization'
 import LeaveOrganization from '~/components/dashboard/leave'
 import ListOrganizations from '~/components/dashboard/list/organizations'
 import Pagination from '~/components/dashboard/pagination'
-import SelectOrganizations from '~/components/dashboard/select/organizations'
 
 export default {
   middleware: 'auth',
@@ -58,8 +55,7 @@ export default {
     DeleteOrganization,
     LeaveOrganization,
     ListOrganizations,
-    Pagination,
-    SelectOrganizations
+    Pagination
   },
   async asyncData ({ store, error }) {
     const token = store.state.auth_token

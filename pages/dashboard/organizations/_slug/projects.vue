@@ -1,17 +1,15 @@
 
 <template>
     <div>
-        <breadcrumb :items="breadcrumbs" />
         <div style="min-height:500px;">
-            <hr />
             <div class="container">
                 <div class="row">
                     <create @success="created" :orga="slug" :show.sync="showCreate" @close="showCreate = false" />
                     <delete :show="showDelete" @delete="remove" @close="showDelete = false" :name="deleteName" />
-                    <div class="col-md-3">
-                        <select-organizations :current="slug" :path="'projects'" />
+                    <div class="col-md-4">
+                        <breadcrumb :items="breadcrumbs" />
                     </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-1"></div>
                     <div class="col-md-3">
                         <span class="h3 light-h3">Projects &nbsp;</span>
                         <span class="text-primary"> {{ objects.count | int }}</span>
@@ -46,7 +44,6 @@ import Create from '~/components/dashboard/create/project'
 import Delete from '~/components/dashboard/delete/project'
 import List from '~/components/dashboard/list/projects'
 import Pagination from '~/components/dashboard/pagination'
-import SelectOrganizations from '~/components/dashboard/select/organizations'
 
 export default {
   middleware: 'auth',
@@ -56,8 +53,7 @@ export default {
     Create,
     Delete,
     List,
-    Pagination,
-    SelectOrganizations
+    Pagination
   },
   async asyncData ({ params, store, error }) {
     const token = store.state.auth_token
