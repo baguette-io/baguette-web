@@ -3,7 +3,7 @@
  * 1. General
  */
 body {
-    font-family: 'Lato',sans-serif;
+    /*font-family: 'Lato',sans-serif;*/
 }
 
 .text-no-decoration, .text-no-decoration:hover {
@@ -12,4 +12,86 @@ body {
 
 .light-h3 {
     font-size: 24px;
+}
+
+/* 
+ * flag colors
+ */
+
+
+.btn-fr-blue {
+    color: #fff;
+    background-color: #4384A8;
+    border-color: #4384A8;
+}
+
+.btn-fr-blue:hover {
+    color: #fff;
+    background-color: #234659;
+    border-color: #234659;
+}
+.btn-fr-blue:focus, .btn-fr-blue.focus {
+    color: #fff;
+    background-color: #234659;
+    border-color: #234659;
+}
+.btn-fr-blue:active, .btn-fr-blue.active, .open > .btn-fr-blue.dropdown-toggle {
+    color: #fff;
+    background-color: #234659;
+    border-color: #234659;
+    background-image: none;
+}
+
+.btn-fr-white {
+    color: #fff;
+    background-color: #E4DFDA;
+    border-color: #E4DFDA;
+}
+
+.btn-fr-red {
+    color: #fff;
+    background-color: #C1666B;
+    border-color: #C1666B;
+}
+
+.btn-fr-red:hover {
+    color: #fff;
+    background-color: #7A3539;
+    border-color: #7A3539;
+}
+.btn-fr-red:focus, .btn-fr-red.focus {
+    color: #fff;
+    background-color: #7A3539;
+    border-color: #7A3539;
+}
+.btn-fr-red:active, .btn-fr-red.active, .open > .btn-fr-red.dropdown-toggle {
+    color: #fff;
+    background-color: #7A3539;
+    border-color: #7A3539;
+    background-image: none;
+}
+
+.btn-outline-fr-blue {
+    color: #4384A8;
+    background-color: transparent;
+    background-image: none;
+    border-color: #4384A8;
+}
+
+.btn-outline-fr-white {
+    color: #E4DFDA;
+    background-color: transparent;
+    background-image: none;
+    border-color: #E4DFDA;
+}
+
+.btn-outline-fr-red {
+    color: #C1666B;
+    background-color: transparent;
+    background-image: none;
+    border-color: #C1666B;
+}
+
+.bg-fr-blue {
+    background-color: #4384A8;
 }
