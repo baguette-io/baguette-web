@@ -43,19 +43,75 @@
 			</div>
 		</div>
 		<div class="feature-1 mt-5">
-				<div class="bg-fr-blue text-white">
-					<div class="container">
-						<div class="pt-5">
-							<div class="row">
-								<h4>Serverless</h4>
-							</div>
-							<div class="row">
-								<p>Don't worry about server :</p>
-								<ul>
-								<li>Simply define your ci/cd workflow in yaml</li>
-								<li>And push it.</li>
-								</ul>
-							</div>
+			<div class="bg-fr-blue text-white">
+				<div class="container">
+					<div class="pt-5">
+						<div class="row">
+							<h4>Serverless</h4>
+						</div>
+						<div class="row">
+							<p>you don't have to worry anymore about servers</p>
+						</div>
+						<div class="row">
+							<span>Focus on your <b>product</b></span>
+						</div>
+						<div class="row">
+							<span>Use <b>any</b> programming language and framework</span>
+						</div>
+						<div class="row">
+							<span>Use <b>any</b> protocol</span>
+						</div>
+						<div class="row">
+							<span>Service discovery, autoscaling, namespaces are <b>>out of the box</b></span>
+						</div>
+						<div class="row">
+							<span><b>No downtime</b> during upgrade></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="feature-2 mt-5">
+			<div class="bg-fr-white text-dark">
+				<div class="container">
+					<div class="pt-5">
+						<div class="row">
+							<h4>Configuration as a code</h4>
+						</div>
+						<div class="row">
+							<p>Define your workflow using <b>yaml</b>:</p>
+						</div>
+						<div class="row">
+							<span>This is <b>limitless</b> as you can run any command</span>
+						</div>
+						<div class="row">
+							<span><b>Isolate</b> your services per environment or pull request</span>
+						</div>
+						<div class="row">
+							<span><b>Choose</b> to export or not your service to the public</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="feature-3 mt-5">
+			<div class="bg-fr-red text-white">
+				<div class="container">
+					<div class="pt-5">
+						<div class="row">
+							<h4>Much more</h4>
+						</div>
+						<div class="row">
+							<p>baguette.io is fully <b>open source (LGPL 3)</b>:</p>
+						</div>
+						<div class="row">
+							<span>Use our <b>REST API</b></span>
+						</div>
+						<div class="row">
+							<span><b>Host it</b> yourself</span>
+						</div>
+						<div class="row">
+							<span><b>Participate</b></span>
 						</div>
 					</div>
 				</div>
