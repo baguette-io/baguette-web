@@ -107,21 +107,23 @@
 		<div class="feature-2 mt-5">
 			<div class="bg-fr-white text-dark">
 				<div class="container">
-					<div class="pt-5">
-						<div class="row">
-							<h4>Configuration as a code</h4>
-						</div>
-						<div class="row">
-							<p>Define <b>any</b> workflow using <b>yaml</b>:</p>
-						</div>
-						<div class="row">
-							<span>Execute <b>any</b> command</span>
-						</div>
-						<div class="row">
-							<span><b>Isolate</b> your services per environment or pull request</span>
-						</div>
-						<div class="row">
-							<span><b>Choose</b> to expose or not your services to the public</span>
+					<div class="row pt-5">
+						<div class="col-md-6">
+							<div class="row">
+								<h4>Configuration as a code</h4>
+							</div>
+							<div class="row">
+								<p>Define <b>any</b> workflow using <b>yaml</b>:</p>
+							</div>
+							<div class="row">
+								<span>Execute <b>any</b> command</span>
+							</div>
+							<div class="row">
+								<span><b>Isolate</b> your services per environment or pull request</span>
+							</div>
+							<div class="row">
+								<span><b>Choose</b> to expose or not your services to the public</span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -130,24 +132,26 @@
 		<div class="feature-3 mt-5">
 			<div class="bg-fr-red text-white">
 				<div class="container">
-					<div class="pt-5">
-						<div class="row">
-							<h4>Libre</h4>
-						</div>
-						<div class="row">
-							<p>baguette.io is <b>fully</b> open source(LGPL 3):</p>
-						</div>
-						<div class="row">
-							<span><b>Powerfull</b> REST API</span>
-						</div>
-						<div class="row">
-							<span><b>Help</b> us improving baguette.io</span>
-						</div>
-						<div class="row">
-							<span>Host it <b>yourself</b></span>
-						</div>
-						<div class="row">
-							<span><b>Fork</b> it</span>
+					<div class="row pt-5">
+						<div class="col-md-6">
+							<div class="row">
+								<h4>Libre</h4>
+							</div>
+							<div class="row">
+								<p>baguette.io is <b>fully</b> open source(LGPL 3):</p>
+							</div>
+							<div class="row">
+								<span><b>Powerfull</b> REST API</span>
+							</div>
+							<div class="row">
+								<span><b>Help</b> us improving baguette.io</span>
+							</div>
+							<div class="row">
+								<span>Host it <b>yourself</b></span>
+							</div>
+							<div class="row">
+								<span><b>Fork</b> it</span>
+							</div>
 						</div>
 					</div>
 				</div>
