@@ -35,7 +35,7 @@
 						<ul class="list-unstyled">
 							<li><span class="prefix">~/app(master) $</span><span class="command">git push baguette.io master</span></li>
 							<li><span class="output">Deploying...</span></li>
-							<li><span class="output">App healthy, you can access it using : <u>https://user.app.projects.baguette.io</u></span></li>
+							<li><span class="output">App healthy, you can access it using : <u>https://user.app.master.projects.baguette.io</u></span></li>
 							<li><span class="prefix">~/app(master) $</span></li>
 						</ul>
 					</div>
@@ -45,29 +45,62 @@
 		<div class="feature-1 mt-5">
 			<div class="bg-fr-blue text-white">
 				<div class="container">
-					<div class="pt-5">
-						<div class="row">
-							<h4>Serverless</h4>
+					<div class="row pt-5">
+						<div class="col-md-6">
+							<div class="row">
+								<h4>Serverless</h4>
+							</div>
+							<div class="row">
+								<p>you don't have to worry anymore about servers</p>
+							</div>
+							<div class="row">
+								<span>Focus on your <b>product</b></span>
+							</div>
+							<div class="row">
+								<span>Use <b>any</b> programming language and framework</span>
+							</div>
+							<div class="row">
+								<span>Use <b>any</b> protocol</span>
+							</div>
+							<div class="row">
+								<span><b>No</b> downtime during deployments</span>
+							</div>
+							<div class="row">
+								<span>REST api, auto discovery, auto scaling, health checks, ...</span>
+							</div>
 						</div>
-						<div class="row">
-							<p>you don't have to worry anymore about servers</p>
-						</div>
-						<div class="row">
-							<span>Focus on your <b>product</b></span>
-						</div>
-						<div class="row">
-							<span>Use <b>any</b> programming language and framework</span>
-						</div>
-						<div class="row">
-							<span>Use <b>any</b> protocol</span>
-						</div>
-						<div class="row">
-							<span>Service discovery, autoscaling, namespaces are <b>>out of the box</b></span>
-						</div>
-						<div class="row">
-							<span><b>No downtime</b> during upgrade></span>
+						<div class="col-md-6">
+							<div class="row">
+								<span class="border rounded border-white ml-3">
+									<img src="/images/python.png" width="75" height="75" class="" alt="python" />
+								</span>
+								<span class="border rounded border-white ml-3">
+									<img src="/images/js.png" width="75" height="75" class="" alt="js" />
+								</span>
+								<span class="border rounded border-white ml-3">
+									<img src="/images/netcore.png" width="75" height="75" class="" alt=".netcore" />
+								</span>
+								<span class="border rounded border-white ml-3">
+									<img src="/images/go.png" width="75" height="75" class="" alt="go" />
+								</span>
+							</div>
+							<div class="row pt-3">
+								<span class="border rounded border-white ml-3">
+									<img src="/images/java.png" width="75" height="75" class="" alt="java" />
+								</span>
+								<span class="border rounded border-white ml-3">
+									<img src="/images/ruby.png" width="75" height="75" class="" alt="ruby" />
+								</span>
+								<span class="border rounded border-white ml-3">
+									<img src="/images/rust.png" width="75" height="75" class="" alt="rust" />
+								</span>
+								<span class="border rounded border-white ml-3">
+									<img src="/images/php.png" width="75" height="75" class="" alt="php" />
+								</span>
+							</div>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -79,16 +112,16 @@
 							<h4>Configuration as a code</h4>
 						</div>
 						<div class="row">
-							<p>Define your workflow using <b>yaml</b>:</p>
+							<p>Define <b>any</b> workflow using <b>yaml</b>:</p>
 						</div>
 						<div class="row">
-							<span>This is <b>limitless</b> as you can run any command</span>
+							<span>Execute <b>any</b> command</span>
 						</div>
 						<div class="row">
 							<span><b>Isolate</b> your services per environment or pull request</span>
 						</div>
 						<div class="row">
-							<span><b>Choose</b> to export or not your service to the public</span>
+							<span><b>Choose</b> to expose or not your services to the public</span>
 						</div>
 					</div>
 				</div>
@@ -99,19 +132,22 @@
 				<div class="container">
 					<div class="pt-5">
 						<div class="row">
-							<h4>Much more</h4>
+							<h4>Libre</h4>
 						</div>
 						<div class="row">
-							<p>baguette.io is fully <b>open source (LGPL 3)</b>:</p>
+							<p>baguette.io is <b>fully</b> open source(LGPL 3):</p>
 						</div>
 						<div class="row">
-							<span>Use our <b>REST API</b></span>
+							<span><b>Powerfull</b> REST API</span>
 						</div>
 						<div class="row">
-							<span><b>Host it</b> yourself</span>
+							<span><b>Help</b> us improving baguette.io</span>
 						</div>
 						<div class="row">
-							<span><b>Participate</b></span>
+							<span>Host it <b>yourself</b></span>
+						</div>
+						<div class="row">
+							<span><b>Fork</b> it</span>
 						</div>
 					</div>
 				</div>
