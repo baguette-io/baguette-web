@@ -60,10 +60,10 @@
 							</div>
 							<div class="mt-4 mb-4 row">
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item bg-fr-blue"><i class="fa fa-flag fa-fw" aria-hidden="true"></i> Use any programming language and framework</li>
-									<li class="list-group-item bg-fr-blue"><i class="fa fa-road fa-fw" aria-hidden="true"></i> Use any protocol</li>
-									<li class="list-group-item bg-fr-blue"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> No downtime during deployments</li>
-									<li class="list-group-item bg-fr-blue"><i class="fa fa-wrench fa-fw" aria-hidden="true"></i> REST api, auto discovery, auto scaling, health checks, ...</li>
+									<li class="list-group-item no-border bg-fr-blue"><i class="fa fa-flag fa-fw" aria-hidden="true"></i> Use any programming language and framework</li>
+									<li class="list-group-item no-border bg-fr-blue"><i class="fa fa-road fa-fw" aria-hidden="true"></i> Use any protocol</li>
+									<li class="list-group-item no-border bg-fr-blue"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> No downtime during deployments</li>
+									<li class="list-group-item no-border bg-fr-blue"><i class="fa fa-wrench fa-fw" aria-hidden="true"></i> REST api, auto discovery, auto scaling, health checks, ...</li>
 								</ul>
 							</div>
 						</div>
@@ -142,9 +142,9 @@
 							</div>
 							<div class="mt-4 mb-4 row">
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item bg-fr-red"><i class="fa fa-server fa-fw" aria-hidden="true"></i> Host it yourself</li>
-									<li class="list-group-item bg-fr-red"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i> Fork it</li>
-									<li class="list-group-item bg-fr-red"><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i> Help us improving baguette.io</li>
+									<li class="list-group-item no-border bg-fr-red"><i class="fa fa-server fa-fw" aria-hidden="true"></i> Host it yourself</li>
+									<li class="list-group-item no-border bg-fr-red"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i> Fork it</li>
+									<li class="list-group-item no-border bg-fr-red"><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i> Help us improving baguette.io</li>
 								</ul>
 							</div>
 						</div>

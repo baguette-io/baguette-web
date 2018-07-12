@@ -128,3 +128,7 @@ body {
     margin-bottom: -1px;
  
 }
+
+.no-border{
+    border: 0;
+}
