@@ -122,7 +122,28 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="mt-5 row">
+							<div class="row">
+								<div class="windows">
+									<div class="row justify-content-md-center">
+										<div class="window">
+											<div class="window-body">
+												<ul class="list-unstyled">
+													<li><span class="output">language: python:3</span></li>
+													<li><span class="output">envs:</span></li>
+													<li><span class="output"> - ENV: development </span></li>
+													<li><span class="output">commands:</span></li>
+													<li><span class="output"> - py.test -xvls</span></li>
+													<li><span class="output">python server.py</span></li>
+													<li><span class="output">ports:</span></li>
+													<li><span class="output"> tcp:</span></li>
+													<li><span class="output"> - 8000</span></li>
+													<li><span class="output">namespaces:</span></li>
+													<li><span class="output"> - development: release-.+dev</span></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>	
 					</div>
