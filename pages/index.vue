@@ -35,7 +35,12 @@
 						<ul class="list-unstyled">
 							<li><span class="prefix">~/app(master) $</span><span class="command">git push baguette.io master</span></li>
 							<li><span class="output">Deploying...</span></li>
-							<li><span class="output">App healthy, you can access it using : <u>https://user.app.master.projects.baguette.io</u></span></li>
+							<li>
+								<span class="output">
+								<span>App healthy, you can access it using :</span>
+								<span class="bt-link">https://user.app.master.projects.baguette.io</span>
+								</span>
+							</li>
 							<li><span class="prefix">~/app(master) $</span></li>
 						</ul>
 					</div>
@@ -48,53 +53,46 @@
 					<div class="row pt-5">
 						<div class="col-md-6">
 							<div class="row">
-								<h4>Serverless</h4>
+								<h4>
+									Serverless
+									<small class="pl-3 font-weight-light font-italic" style="font-size:14px;">Focus on your product</small>
+								</h4>
 							</div>
-							<div class="row">
-								<p>you don't have to worry anymore about servers</p>
-							</div>
-							<div class="row">
-								<span>Focus on your <b>product</b></span>
-							</div>
-							<div class="row">
-								<span>Use <b>any</b> programming language and framework</span>
-							</div>
-							<div class="row">
-								<span>Use <b>any</b> protocol</span>
-							</div>
-							<div class="row">
-								<span><b>No</b> downtime during deployments</span>
-							</div>
-							<div class="row">
-								<span>REST api, auto discovery, auto scaling, health checks, ...</span>
+							<div class="mt-4 mb-4 row">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item bg-fr-blue"><i class="fa fa-flag fa-fw" aria-hidden="true"></i> Use any programming language and framework</li>
+									<li class="list-group-item bg-fr-blue"><i class="fa fa-road fa-fw" aria-hidden="true"></i> Use any protocol</li>
+									<li class="list-group-item bg-fr-blue"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> No downtime during deployments</li>
+									<li class="list-group-item bg-fr-blue"><i class="fa fa-wrench fa-fw" aria-hidden="true"></i> REST api, auto discovery, auto scaling, health checks, ...</li>
+								</ul>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="row">
-								<span class="border rounded border-white ml-3">
+							<div class="mt-5 row">
+								<span class="ml-3">
 									<img src="/images/python.png" width="75" height="75" class="" alt="python" />
 								</span>
-								<span class="border rounded border-white ml-3">
+								<span class="ml-3">
 									<img src="/images/js.png" width="75" height="75" class="" alt="js" />
 								</span>
-								<span class="border rounded border-white ml-3">
+								<span class="ml-3">
 									<img src="/images/netcore.png" width="75" height="75" class="" alt=".netcore" />
 								</span>
-								<span class="border rounded border-white ml-3">
+								<span class="ml-3">
 									<img src="/images/go.png" width="75" height="75" class="" alt="go" />
 								</span>
 							</div>
 							<div class="row pt-3">
-								<span class="border rounded border-white ml-3">
+								<span class="ml-3">
 									<img src="/images/java.png" width="75" height="75" class="" alt="java" />
 								</span>
-								<span class="border rounded border-white ml-3">
+								<span class="ml-3">
 									<img src="/images/ruby.png" width="75" height="75" class="" alt="ruby" />
 								</span>
-								<span class="border rounded border-white ml-3">
+								<span class="ml-3">
 									<img src="/images/rust.png" width="75" height="75" class="" alt="rust" />
 								</span>
-								<span class="border rounded border-white ml-3">
+								<span class="ml-3">
 									<img src="/images/php.png" width="75" height="75" class="" alt="php" />
 								</span>
 							</div>
@@ -110,21 +108,23 @@
 					<div class="row pt-5">
 						<div class="col-md-6">
 							<div class="row">
-								<h4>Configuration as a code</h4>
+								<h4>
+									Configuration as a code
+									<small class="pl-3 font-weight-light font-italic" style="font-size:14px;">Define any workflow using yaml</small>
+								</h4>
 							</div>
-							<div class="row">
-								<p>Define <b>any</b> workflow using <b>yaml</b>:</p>
-							</div>
-							<div class="row">
-								<span>Execute <b>any</b> command</span>
-							</div>
-							<div class="row">
-								<span><b>Isolate</b> your services per environment or pull request</span>
-							</div>
-							<div class="row">
-								<span><b>Choose</b> to expose or not your services to the public</span>
+							<div class="mt-4 mb-4 row">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item bg-fr-white"><i class="fa fa-terminal fa-fw" aria-hidden="true"></i> Execute any command</li>
+									<li class="list-group-item bg-fr-white"><i class="fa fa-lock fa-fw" aria-hidden="true"></i> Isolate your services per environment or pull request</li>
+									<li class="list-group-item bg-fr-white"><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> Choose to expose or not your services to the public</li>
+								</ul>
 							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="mt-5 row">
+							</div>
+						</div>	
 					</div>
 				</div>
 			</div>
@@ -135,22 +135,17 @@
 					<div class="row pt-5">
 						<div class="col-md-6">
 							<div class="row">
-								<h4>Libre</h4>
+								<h4>
+									Libre
+									<small class="pl-3 font-weight-light font-italic" style="font-size:14px;">baguette.io is fully open source</small>
+								</h4>
 							</div>
-							<div class="row">
-								<p>baguette.io is <b>fully</b> open source(LGPL 3):</p>
-							</div>
-							<div class="row">
-								<span><b>Powerfull</b> REST API</span>
-							</div>
-							<div class="row">
-								<span><b>Help</b> us improving baguette.io</span>
-							</div>
-							<div class="row">
-								<span>Host it <b>yourself</b></span>
-							</div>
-							<div class="row">
-								<span><b>Fork</b> it</span>
+							<div class="mt-4 mb-4 row">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item bg-fr-red"><i class="fa fa-server fa-fw" aria-hidden="true"></i> Host it yourself</li>
+									<li class="list-group-item bg-fr-red"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i> Fork it</li>
+									<li class="list-group-item bg-fr-red"><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i> Help us improving baguette.io</li>
+								</ul>
 							</div>
 						</div>
 					</div>
