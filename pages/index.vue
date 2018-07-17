@@ -128,17 +128,16 @@
 										<div class="window">
 											<div class="window-body">
 												<ul class="list-unstyled">
-													<li><span class="output">language: python:3</span></li>
-													<li><span class="output">envs:</span></li>
-													<li><span class="output"> - ENV: development </span></li>
-													<li><span class="output">commands:</span></li>
-													<li><span class="output"> - py.test -xvls</span></li>
-													<li><span class="output">python server.py</span></li>
-													<li><span class="output">ports:</span></li>
-													<li><span class="output"> tcp:</span></li>
-													<li><span class="output"> - 8000</span></li>
-													<li><span class="output">namespaces:</span></li>
-													<li><span class="output"> - development: release-.+dev</span></li>
+													<li><small class="pl-2 font-weight-light">language:</small><span class="output"> python:3</span></li>
+													<li><small class="pl-2 font-weight-light">envs:</small></li>
+													<li><span class="pl-3 output"> - ENV: development </span></li>
+													<li><small class="pl-2 font-weight-light">commands:</small></li>
+													<li><span class="pl-3 output"> - py.test -xvls</span></li>
+													<li><span class="pl-3 output"> - python server.py</span></li>
+													<li><small class="pl-2 font-weight-light"> tcp:</small></li>
+													<li><span class="pl-3 output"> - 8000</span></li>
+													<li><small class="pl-2 font-weight-light">namespaces:</small></li>
+													<li><span class="pl-3 output"> - development: release-.+dev</span></li>
 												</ul>
 											</div>
 										</div>
