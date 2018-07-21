@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: baguette-web
+  namespace: baguette
+  labels:
+    kubernetes.io/name: baguette-web
+spec:
+  ports:
+  - port: 80
+    targetPort: 8001
+  selector:
+    k8s-app: baguette-web

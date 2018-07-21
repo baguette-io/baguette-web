@@ -1,0 +1,30 @@
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    metadata:
+      name: baguette-web
+      namespace: baguette
+      labels:
+        k8s-app: baguette-web
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          k8s-app: baguette-web
+      template:
+        metadata:
+          labels:
+            k8s-app: baguette-web
+        spec:
+          containers:
+          - name: baguette-web
+            image: pydavid/baguette.io:baguette-web
+            imagePullPolicy: IfNotPresent
+            env:
+            - name: ENDPOINT
+            - value: "https://api.development.baguette.io/api/0.1/"
+            ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+          imagePullSecrets:
+          - name: baguette-io-devk8s-pull-secret
