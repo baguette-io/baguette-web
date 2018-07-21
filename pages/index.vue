@@ -157,14 +157,14 @@
 							<div class="row">
 								<h4>
 									Libre
-									<small class="pl-3 font-weight-light font-italic" style="font-size:14px;">baguette.io is fully open source</small>
+									<small class="pl-3 font-weight-light font-italic" style="font-size:14px;">baguette is fully open source</small>
 								</h4>
 							</div>
 							<div class="mt-4 mb-4 row">
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item no-border bg-fr-red"><i class="fa fa-server fa-fw" aria-hidden="true"></i> Host it yourself</li>
-									<li class="list-group-item no-border bg-fr-red"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i> Fork it</li>
-									<li class="list-group-item no-border bg-fr-red"><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i> Help us improving baguette.io</li>
+									<li class="list-group-item no-border bg-fr-red"><i class="fa fa-server fa-fw" aria-hidden="true"></i><a class="link-unstyled" target="_blank" href="https://quay.io/baguette.io/"><span class="bt-link"> Host it yourself</span></a></li>
+									<li class="list-group-item no-border bg-fr-red"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i><a class="link-unstyled" target="_blank" href="https://github.com/baguette-io/"><span class="bt-link"> Fork it</span></a></li>
+									<li class="list-group-item no-border bg-fr-red"><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i><a class="link-unstyled" target="_blank" href="https://join.slack.com/t/baguetteioteam/shared_invite/enQtNDAyNjI1MjU5NzQ2LWIzYTcxYzE2MjRiNDBkNDYwYTc1YmRlODRhYWFkOWYzNDdkNDViYjcwMzE2YWM0YzM1NDYyYjFkZTgwMWFkYmQ"><span class="bt-link"> Help us with baguette</span></a></li>
 								</ul>
 							</div>
 						</div>

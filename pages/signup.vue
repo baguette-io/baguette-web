@@ -1,11 +1,15 @@
 <template>
-    <div class="container" style="min-height: 500px;">
-        <div class="row">
-            <div class="col-md-5"></div>
-            <div class="col-md-4">
-                <h2 class="title">Sign up</h2>
+        <div class="container headtitle">
+            <div class="row justify-content-md-center">
+                <div class="col-12 col-md-auto">
+                    <h1>Sign up</h1>
+                </div>
             </div>
-        </div>
+            <div class="row justify-content-md-center">
+                <div class="col-12 col-md-auto">
+                    <h6>One step to automation</h6>
+	    		</div>
+            </div>
         <form class="form-horizontal" method="post" v-on:submit.prevent="signup" action="">
             <div class="form-group row" v-bind:class="{ 'has-danger': usernameError }">
                 <div class="col-md-4"></div>
