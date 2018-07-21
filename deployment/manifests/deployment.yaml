@@ -26,5 +26,3 @@
             - containerPort: 3000
               name: http
               protocol: TCP
-          imagePullSecrets:
-          - name: baguette-io-devk8s-pull-secret
