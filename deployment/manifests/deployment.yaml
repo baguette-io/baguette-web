@@ -17,7 +17,7 @@
         spec:
           containers:
           - name: baguette-web
-            image: quay.io/baguette.io:baguette-web:0.20
+            image: quay.io/baguette.io/baguette-web:0.20
             imagePullPolicy: IfNotPresent
             env:
             - name: ENDPOINT
