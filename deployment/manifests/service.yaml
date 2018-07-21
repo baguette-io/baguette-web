@@ -8,6 +8,6 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 8001
+    targetPort: 3000
   selector:
     k8s-app: baguette-web
