@@ -1,26 +1,34 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5"></div>
-            <div class="col-md-4">
-                <h2 class="title">Account created</h2>
+    <div class="container headtitle">
+        <div class="row justify-content-md-center">
+            <div class="col-12 col-md-auto">
+                <h1>Account created</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-5"></div>
-            <div class="col-md-4">
-                <div class="text-center">
-                    <b>{{ username }}</b>, we have generated for you a private key:
-                </div>
-                <div class="row">
-                    <a href="" class="btn btn-block btn-secondary" id="download">Please, save it.</a>
-                </div>
-                <div class="text-center">
-                    <p><small><u>We don't store the private key in our databases.</u></small></p>
-                </div>
-                <div class="row">
-                    <nuxt-link class="btn btn-block btn-danger" role="button" to="/login">Now, you can Log in</nuxt-link>
-                </div>
+        <div class="row justify-content-md-center">
+            <div class="col-12 col-md-auto">
+                <h6>Enjoy baguette</h6>
+            </div>
+        </div>
+            
+        <div class="row justify-content-md-center  mt-4">
+            <div class="text-center">
+                <b>{{ username }}</b> we have generated for you a private key
+            </div>
+        </div>
+        <div class="row justify-content-md-center  mt-4">
+            <div class="text-center">
+                <a href="" class="btn btn-block btn-fr-blue" id="download">Please, save it.</a>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="text-center">
+                <span class="text-muted bt-link" style="font-size: 80%;">We don't store it in our database</span>
+            </div>
+        </div>
+        <div class="row justify-content-md-center  mt-4">
+            <div class="text-center">
+                <nuxt-link class="btn btn-block btn-fr-red" role="button" to="/login">Now, you can log in</nuxt-link>
             </div>
         </div>
     </div>

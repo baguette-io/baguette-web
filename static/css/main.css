@@ -105,7 +105,21 @@ body {
     border-color: #dc5959;
 }
 
-.bg-fr-blue {
+.border-fr-blue {
+    border-color: #416be4;
+}
+
+.border-fr-white {
+    border-color: #FFFFFF;
+}
+
+
+.border-fr-red {
+    border-color: #dc5959;
+}
+
+
+.bg-fr-blue{
     background-color: #416be4;
 }
 
@@ -117,9 +131,6 @@ body {
     background-color: #dc5959;
 }
 
-/*
- * list
-*/
 
 .list-group-item {
     position: relative;
@@ -150,3 +161,20 @@ body {
     padding: inherit;
     vertical-align: inherit;
   }
+
+.display-block{
+    display: block;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.validation-error {
+    visibility: hidden;
+    width: 100%;
+    margin-top: .25rem;
+    font-weight: 300;
+    font-size: 90%;
+    color: #dc3545;
+}
