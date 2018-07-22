@@ -1,8 +1,13 @@
 <template>
-    <div style="min-height:500px;">
-        <div class="container">
-            <div class="row">
-                Logout...
+    <div class="container headtitle">
+        <div class="row justify-content-md-center">
+            <div class="col-12 col-md-auto">
+                <h1>Logging out</h1>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-12 col-md-auto">
+                <h6>Au revoir</h6>
             </div>
         </div>
     </div>
@@ -12,7 +17,7 @@
 export default {
   mounted: function (redirect) {
     this.$store.commit('logout')
-    this.$router.replace('/login')
+    this.$router.replace('/')
   }
 }
 </script>
