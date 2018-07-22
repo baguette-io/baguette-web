@@ -1,53 +1,51 @@
 <template>
-    <div>
-        <div style="min-height:500px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <select-organizations :current="''" :path="''" />
-                    </div>
-                    <div class="col-md-3"></div>
-                    <div class="col-sm-2">
-                        <nuxt-link to="/dashboard/invitations/" class="text-no-decoration">
-                            <small class="text-muted text-uppercase text-weight-light">invitations</small>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="h6">{{ invits.count | int }}</p>
-                                </div>
+    <div style="headtitle mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <select-organizations :current="''" :path="''" />
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-sm-2">
+                    <nuxt-link to="/dashboard/invitations/" class="text-no-decoration">
+                        <small class="text-muted text-uppercase text-weight-light">invitations</small>
+                        <div class="row">
+                            <div class="col">
+                                <p class="h6">{{ invits.count | int }}</p>
                             </div>
-                        </nuxt-link>
-                    </div>
-                    <div class="col-sm-2">
-                        <nuxt-link to="/dashboard/organizations/" class="text-no-decoration">
-                            <small class="text-muted text-uppercase text-weight-light">organizations</small>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="h6">{{ orgas.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_orgas.value | int }}</span></p>
-                                </div>
+                        </div>
+                    </nuxt-link>
+                </div>
+                <div class="col-sm-2">
+                    <nuxt-link to="/dashboard/organizations/" class="text-no-decoration">
+                        <small class="text-muted text-uppercase text-weight-light">organizations</small>
+                        <div class="row">
+                            <div class="col">
+                                <p class="h6">{{ orgas.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_orgas.value | int }}</span></p>
                             </div>
-                        </nuxt-link>
-                    </div>
-                    <div class="col-sm-2">
-                        <nuxt-link to="/dashboard/keys/" class="text-no-decoration">
-                            <small class="text-muted text-uppercase text-weight-light">keys</small>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="h6">{{ keys.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_keys.value | int }}</span></p>
-                                </div>
+                        </div>
+                    </nuxt-link>
+                </div>
+                <div class="col-sm-2">
+                    <nuxt-link to="/dashboard/keys/" class="text-no-decoration">
+                        <small class="text-muted text-uppercase text-weight-light">keys</small>
+                        <div class="row">
+                            <div class="col">
+                                <p class="h6">{{ keys.count | int }} <span class="text-muted text-weight-light">/ {{ quotas.max_keys.value | int }}</span></p>
                             </div>
-                        </nuxt-link>
-                    </div>
+                        </div>
+                    </nuxt-link>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                   <div class="col-md-6">
-                        <list-events :orga="'baguette.io'" />
-                    </div>
-                   <div class="col-md-3">
-                    </div>
-                   <div class="col-md-3">
-                    </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <list-events :orga="'baguette.io'" />
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
                 </div>
             </div>
         </div>

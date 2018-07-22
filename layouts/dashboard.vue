@@ -1,19 +1,30 @@
 <template>
   <div class="dashboard">
-    <nav class="navbar navbar-expand-lg navbar-light">
 	    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/baguette.png" width="40" height="40" alt="">
+                </a>
+                <ul class="navbar-nav">
+                    <li class="">
+                        <a class="nav-link text-dark" href="#">Get Started</a>
+                    </li>
+                    <li class="">
+                        <a class="nav-link text-dark" href="#">Documentation</a>
+                    </li>
+                    <li class="">
+                        <a class="btn btn-fr-red" href="/logout" role="button">Log out</a>
+                    </li>
+                </ul>
+            </div>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto">
                     <dashboard-notif :show.sync="show" :prefix.sync="notifPrefix" :suffix.sync="notifSuffix" :isSuccess.sync="isSuccess" :isError.sync="isError" :obj.sync="notifObj" @hide="hide" />
                 </ul>
-                <ul class="navbar-nav navbar-right">
-                    <li class="">
-                        <a class="btn btn-danger" href="/logout" role="button">Log out</a>
-                    </li>
-                </ul>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <nuxt/>
     <default-footer />
   </div>

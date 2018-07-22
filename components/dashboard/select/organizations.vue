@@ -1,6 +1,6 @@
 <template>
     <div class="dropdown shown">
-        <button class="btn dropdown-toggle btn-outline-danger" href="#" role="button" id="dropdownOrganization" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn dropdown-toggle btn-fr-blue" href="#" role="button" id="dropdownOrganization" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <template v-if="current">
               {{ current }}
             </template>
